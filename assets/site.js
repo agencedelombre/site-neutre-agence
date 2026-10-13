@@ -117,6 +117,7 @@
     b.addEventListener('click', function(){
       var f = b.dataset.filter;
       fb.forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+      var bt = document.getElementById('bento'); if (bt) bt.classList.toggle('filtered', f !== 'all');
       document.querySelectorAll('[data-cat]').forEach(function(c){
         c.hidden = !(f === 'all' || c.dataset.cat.split(' ').indexOf(f) > -1);
       });
