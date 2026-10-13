@@ -599,3 +599,9 @@ button.city{font-family:inherit;color:inherit;cursor:pointer}
 a.city{color:inherit;display:inline-block}
 .steps3{margin-top:34px}
 .steps3 .box h4{color:var(--orange-dk)}
+
+/* Compteurs : le nombre garde la taille et la couleur du chiffre */
+.kpi b span,.stat b span,.tl-kpis b span{font-size:inherit;color:inherit;font-weight:inherit;font-family:inherit}
+.kpi b{display:block;white-space:nowrap}
+.page-hero{padding-bottom:36px}
+.page-hero+main>section:first-child{padding-top:24px}
