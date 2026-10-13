@@ -850,3 +850,7 @@ section.dark::before{content:"";position:absolute;top:0;left:0;right:0;height:6p
 /* lames plus légères : les réalisations restent bien visibles au repos */
 .work img{filter:grayscale(.3) brightness(.92)}
 .work .blades i{opacity:.55;transform:scaleX(.5)}
+
+/* Séparateurs : rayons de lumière diffus (persienne) à la place des filets orange */
+section.dark::before{height:220px;background:repeating-linear-gradient(104deg,rgba(228,225,219,.075) 0 54px,transparent 54px 128px);opacity:1;pointer-events:none;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+section.dark>.wrap{position:relative;z-index:1}
