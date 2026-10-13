@@ -854,3 +854,11 @@ section.dark::before{content:"";position:absolute;top:0;left:0;right:0;height:6p
 /* Séparateurs : rayons de lumière diffus (persienne) à la place des filets orange */
 section.dark::before{height:220px;background:repeating-linear-gradient(104deg,rgba(228,225,219,.075) 0 54px,transparent 54px 128px);opacity:1;pointer-events:none;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
 section.dark>.wrap{position:relative;z-index:1}
+
+/* Bouton de réservation fixe sur mobile */
+.m-cta{display:none}
+@media(max-width:900px){
+  .m-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:80;justify-content:center;align-items:center;background:var(--orange);color:var(--ink)!important;font-weight:800;padding:15px;border-radius:14px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(140%);transition:transform .45s var(--ease)}
+  .m-cta.show{transform:none}
+  footer{padding-bottom:96px}
+}

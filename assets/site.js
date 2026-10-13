@@ -206,6 +206,11 @@
     })(t0);
   }
 
+
+  // Bouton fixe mobile : visible après le hero
+  var mcta = document.querySelector('.m-cta');
+  if (mcta) { var upd = function(){ mcta.classList.toggle('show', scrollY > 520); }; addEventListener('scroll', upd, {passive:true}); upd(); }
+
   // Mot qui tourne dans le H1
   var words = ['visible.', 'choisie.', 'contactée.', 'rentable.'], rot = document.getElementById('rot');
   if (!reduce) {
