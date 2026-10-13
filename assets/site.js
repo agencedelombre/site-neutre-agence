@@ -1,7 +1,7 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Réservation (TODO : remplacer par un calendrier généraliste, celui-ci est dédié aux artisans BTP)
+  // Réservation (calendrier de réservation conservé : lien Meta)
   var BOOKING_URL = 'https://api.leadconnectorhq.com/widget/bookings/diagnostic-artisanszzpxy8wpazah';
   document.querySelectorAll('[data-book]').forEach(function(a){
     a.addEventListener('click', function(e){
@@ -12,6 +12,7 @@
   });
 
   var yy=document.getElementById('y'); if(yy) yy.textContent = new Date().getFullYear();
+  document.querySelectorAll('[data-wa]').forEach(function(l){ l.addEventListener('click', function(){ if (typeof fbq === 'function') fbq('track', 'Contact'); }); });
 
   // Nav : fond au scroll + barre de progression + menu mobile
   var nav = document.getElementById('nav'), bar = document.getElementById('progress');
@@ -208,7 +209,7 @@
 
 
   // Bouton fixe mobile : visible après le hero
-  var mcta = document.querySelector('.m-cta');
+  var mcta = document.querySelector('.m-bar');
   if (mcta) { var upd = function(){ mcta.classList.toggle('show', scrollY > 520); }; addEventListener('scroll', upd, {passive:true}); upd(); }
 
   // Mot qui tourne dans le H1

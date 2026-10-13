@@ -862,3 +862,17 @@ section.dark>.wrap{position:relative;z-index:1}
   .m-cta.show{transform:none}
   footer{padding-bottom:96px}
 }
+
+/* WhatsApp : bouton flottant (ordinateur) et barre mobile */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--beton);color:var(--ink);border:2px solid var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.3);transition:transform .3s var(--ease),background .3s}
+.wa-float:hover{transform:translateY(-3px) scale(1.05);background:var(--orange)}
+.m-bar{display:none}
+@media(max-width:900px){
+  .wa-float{display:none}
+  .m-bar{display:flex;gap:10px;position:fixed;left:12px;right:12px;bottom:12px;z-index:80;transform:translateY(140%);transition:transform .45s var(--ease)}
+  .m-bar.show{transform:none}
+  .m-bar .m-cta{position:static;flex:1;transform:none;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .m-wa{width:54px;flex:none;display:grid;place-items:center;border-radius:14px;background:var(--beton);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+}
+.hero h1{font-size:clamp(2rem,4.15vw,4rem)}
+@media(max-width:900px){.hero h1{font-size:clamp(2.1rem,9vw,3rem)}}
