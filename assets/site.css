@@ -543,3 +543,7 @@ button.city{font-family:inherit;color:inherit;cursor:pointer}
 #services .card:hover{transform:translateY(-4px)}
 @media(max-width:900px){#services .card{grid-template-columns:40px 1fr;padding:18px}}
 #services .card{align-content:start;grid-template-rows:auto 1fr}
+
+/* La ligne de la frise passe derrière les numéros */
+.steps::before,.steps::after{z-index:0}
+.steps .step{position:relative;z-index:1}
