@@ -1,6 +1,31 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ---- Consentement cookies : le Pixel Meta ne se charge qu'après acceptation ----
+  var PIXEL_ID = '810327792040286', KEY = 'ado-cookie-consent';
+  function readConsent(){ try { var v = JSON.parse(localStorage.getItem(KEY) || 'null'); if (v && Date.now() - v.t < 15552000000) return v.c; } catch (e) {} return null; }
+  function saveConsent(c){ try { localStorage.setItem(KEY, JSON.stringify({c: c, t: Date.now()})); } catch (e) {} }
+  function initPixel(){
+    if (window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID); fbq('track', 'PageView');
+    try { var fb = new URLSearchParams(location.search).get('fbclid'); if (fb) sessionStorage.setItem('fbclid', fb); } catch (e) {}
+  }
+  function closeBanner(){ var el = document.getElementById('cookie'); if (el) el.remove(); }
+  function showBanner(){
+    if (document.getElementById('cookie')) return;
+    var d = document.createElement('div'); d.id = 'cookie'; d.className = 'cookie'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Gestion des cookies');
+    d.innerHTML = '<p><strong>Cookies</strong><br>Nous utilisons un cookie de mesure publicitaire (Meta) pour savoir ce qui fonctionne. Vous choisissez, et vous pouvez changer d\'avis à tout moment. <a href="/cookies/">En savoir plus</a></p><div class="cookie-btns"><button type="button" data-c="denied">Refuser</button><button type="button" data-c="granted">Accepter</button></div>';
+    document.body.appendChild(d);
+    d.addEventListener('click', function(e){
+      var b = e.target.closest('button[data-c]'); if (!b) return;
+      saveConsent(b.dataset.c); if (b.dataset.c === 'granted') initPixel(); closeBanner();
+    });
+  }
+  var consent = readConsent();
+  if (consent === 'granted') initPixel(); else if (consent === null) showBanner();
+  document.querySelectorAll('[data-cookie-settings]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); try { localStorage.removeItem(KEY); } catch (er) {} showBanner(); }); });
+
   // Réservation (calendrier de réservation conservé : lien Meta)
   var BOOKING_URL = 'https://api.leadconnectorhq.com/widget/bookings/diagnostic-artisanszzpxy8wpazah';
   document.querySelectorAll('[data-book]').forEach(function(a){

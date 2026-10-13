@@ -907,3 +907,15 @@ section.dark>.wrap{position:relative;z-index:1}
 @media(max-width:900px){.bento{grid-auto-rows:200px}}
 .work::after{background:linear-gradient(180deg,rgba(10,8,5,0) 25%,rgba(10,8,5,.6) 58%,rgba(10,8,5,.94) 100%)}
 .work.logo::after{background:linear-gradient(180deg,rgba(10,8,5,0) 38%,rgba(10,8,5,.94) 100%)}
+
+/* Bandeau cookies */
+.cookie{position:fixed;left:16px;bottom:16px;z-index:95;max-width:400px;background:var(--ink);color:var(--beton);border:1px solid rgba(228,225,219,.2);border-radius:16px;padding:20px 22px;box-shadow:0 20px 50px rgba(0,0,0,.5);animation:fade .5s}
+.cookie p{font-size:.88rem;line-height:1.5;color:#C9C5BC;margin:0 0 14px}
+.cookie p strong{color:var(--beton);font-family:var(--display);font-weight:400;font-size:1.1rem;letter-spacing:.02em;text-transform:uppercase}
+.cookie a{color:var(--beton);text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}
+.cookie-btns{display:flex;gap:10px}
+.cookie-btns button{flex:1;font:inherit;font-weight:800;font-size:.9rem;padding:12px;border-radius:12px;cursor:pointer;transition:background .2s,transform .2s}
+.cookie-btns [data-c="granted"]{background:var(--orange);border:1px solid var(--orange);color:var(--ink)}
+.cookie-btns [data-c="denied"]{background:transparent;border:1px solid rgba(228,225,219,.45);color:var(--beton)}
+.cookie-btns button:hover{transform:translateY(-2px)}
+@media(max-width:900px){.cookie{left:10px;right:10px;bottom:10px;max-width:none}}

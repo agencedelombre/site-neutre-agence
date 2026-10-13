@@ -23,9 +23,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/anton-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 
 <script type="application/ld+json">
 {
@@ -241,26 +241,6 @@
     }
   ]
 }
-</script>
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','810327792040286');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=810327792040286&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel Code -->
-<script>
-(function(){
-  var p = new URLSearchParams(window.location.search);
-  var fbclid = p.get('fbclid');
-  if (fbclid) sessionStorage.setItem('fbclid', fbclid);
-})();
 </script>
 
 <link rel="stylesheet" href="/assets/site.css">
@@ -694,6 +674,90 @@ fbq('track','PageView');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </main>
 
 <footer>
@@ -723,7 +787,7 @@ fbq('track','PageView');
       </div>
     </div>
     <div class="legal"><span>© <span id="y"></span> Agence de l'Ombre. Tous droits réservés.</span>
-      <span><a href="/mentions-legales/">Mentions légales</a> · <a href="/cgv/">CGV</a> · <a href="/politique-confidentialite/">Confidentialité</a> · <a href="/cookies/">Cookies</a></span></div>
+      <span><a href="/mentions-legales/">Mentions légales</a> · <a href="/cgv/">CGV</a> · <a href="/politique-confidentialite/">Confidentialité</a> · <a href="/cookies/">Cookies</a> · <a href="#" data-cookie-settings>Gérer les cookies</a></span></div>
   </div>
 </footer>
 
