@@ -189,6 +189,23 @@
     });
   }
 
+
+  // Hero : lampe torche (curseur sur ordinateur, balayage lent sur mobile)
+  var heroEl = document.querySelector('.hero');
+  if (heroEl && !reduce) {
+    var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches, moved = false;
+    function setTorch(x, y){ heroEl.style.setProperty('--mx', x + 'px'); heroEl.style.setProperty('--my', y + 'px'); }
+    if (fine) heroEl.addEventListener('pointermove', function(e){ moved = true; var r = heroEl.getBoundingClientRect(); setTorch(e.clientX - r.left, e.clientY - r.top); });
+    var t0 = performance.now();
+    (function sweep(t){
+      if (!moved) {
+        var r = heroEl.getBoundingClientRect(), k = (t - t0) / 1000;
+        if (r.bottom > 0 && r.top < innerHeight) setTorch(r.width * (.5 + .36 * Math.sin(k * .32)), r.height * (.44 + .22 * Math.sin(k * .21 + 1)));
+        requestAnimationFrame(sweep);
+      }
+    })(t0);
+  }
+
   // Mot qui tourne dans le H1
   var words = ['visible.', 'choisie.', 'contactée.', 'rentable.'], rot = document.getElementById('rot');
   if (!reduce) {
