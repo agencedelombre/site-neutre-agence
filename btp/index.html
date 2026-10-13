@@ -1,0 +1,3819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic Visibilité | Agence de l'Ombre · BTP</title>
+<link rel="icon" type="image/svg+xml" href="../Agence%20de%20l'ombre%20logo%20d%202.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','810327792040286');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=810327792040286&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<script>
+// Capture fbclid pour attribution Meta inter-sessions
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var fbclid = p.get('fbclid');
+  if (fbclid) sessionStorage.setItem('fbclid', fbclid);
+})();
+</script>
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --orange:      #EF7F15;
+  --orange-dk:   #D4700D;
+  --orange-lt:   #F59530;
+  --dark:        #0D0D0D;
+  --dark2:       #161616;
+  --white:       #ffffff;
+  --surface:     #F6F6F4;
+  --card:        #ffffff;
+  --border:      #E8E8E6;
+  --text:        #0F0F0F;
+  --muted:       #6B6B6B;
+  --red:         #B91C1C;
+  --red-bg:      #FEF2F2;
+  --green:       #16A34A;
+  --r:           18px;
+  --r-sm:        10px;
+  --sh:          0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.07);
+  --sh-lg:       0 8px 32px rgba(0,0,0,0.12);
+  --wrap:        1240px;
+  --gap:         2rem;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
+}
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--surface);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+img { display:block; max-width:100%; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ═══════════════════════════════════════════
+   WRAPPER
+═══════════════════════════════════════════ */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; } to { opacity:1; }
+}
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0; }
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(239,127,21,.45); }
+  60%      { box-shadow: 0 0 0 16px rgba(239,127,21,0); }
+}
+@keyframes scaleIn {
+  from { opacity:0; transform:scale(.93); }
+  to   { opacity:1; transform:scale(1); }
+}
+@keyframes slideRight {
+  from { opacity:0; transform:translateX(-24px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes slideLeft {
+  from { opacity:0; transform:translateX(24px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes ticker {
+  0%   { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+.reveal {
+  opacity:0;
+  transform:translateY(28px);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+.rv-l { opacity:0; transform:translateX(-28px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+.rv-r { opacity:0; transform:translateX(28px);  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+.rv-l.visible, .rv-r.visible { opacity:1; transform:translateX(0); }
+.d1 { transition-delay:.08s; }
+.d2 { transition-delay:.18s; }
+.d3 { transition-delay:.28s; }
+.d4 { transition-delay:.38s; }
+.d5 { transition-delay:.48s; }
+.d6 { transition-delay:.58s; }
+.rv-up {
+  opacity: 0;
+  transform: translateY(40px) scale(.98);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+}
+.rv-up.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ═══════════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════════ */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar {
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  height: 38px;
+}
+.ticker-wrap {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+.ticker-inner {
+  display: flex;
+  width: max-content;
+  animation: ticker 28s linear infinite;
+  gap: 0;
+  height: 38px;
+  align-items: center;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .4px;
+  white-space: nowrap;
+  padding: 0 3rem;
+}
+.ticker-item span { color: var(--orange); }
+.ticker-dot { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,.2); }
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav {
+  background: rgba(13,13,13,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  padding: 0;
+}
+.nav-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo img { flex-shrink: 0; }
+.nav-logo-text { font-size:14px; font-weight:800; color:#fff; letter-spacing:.3px; }
+.nav-logo-sub  { font-size:10px; font-weight:600; color:rgba(255,255,255,.4); letter-spacing:.5px; text-transform:uppercase; }
+.nav-reveal-link {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .45rem .85rem;
+  border-radius: 8px;
+  color: rgba(255,255,255,.6);
+  border: 1px solid rgba(255,255,255,.12);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color .2s, border-color .2s, background .2s;
+  flex-shrink: 0;
+}
+.nav-reveal-link:hover { color: var(--orange); border-color: var(--orange); background: rgba(239,127,21,.08); }
+.nav-reveal-text-group { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.nav-reveal-sub { font-size: 9px; font-weight: 500; color: rgba(255,255,255,.35); letter-spacing: .3px; line-height: 1; margin-top: 1px; }
+@keyframes revealPulse {
+  0%, 100% { border-color: rgba(255,255,255,.12); color: rgba(255,255,255,.6); }
+  50% { border-color: rgba(239,127,21,.5); color: rgba(239,127,21,.9); }
+}
+.nav-reveal-link { animation: revealPulse 3s ease-in-out infinite; }
+.nav-cta-short { display: none; }
+
+.nav-cta {
+  background: var(--orange);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: var(--r-sm);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(239,127,21,0), 0 4px 14px rgba(239,127,21,.35);
+}
+.nav-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--orange);
+  filter: blur(12px);
+  opacity: .45;
+  z-index: -1;
+  transform: translateY(5px) scaleX(.85);
+  transition: opacity .2s, transform .2s;
+}
+.nav-cta:hover {
+  background: var(--orange-dk);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239,127,21,.45);
+}
+.nav-cta:hover::after { opacity: .65; transform: translateY(7px) scaleX(.9); }
+
+/* ═══════════════════════════════════════════
+   HERO,2 colonnes
+═══════════════════════════════════════════ */
+.hero-section {
+  background: var(--dark);
+  padding: 80px 0 72px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -1px;
+}
+.hero-bg-glow {
+  position: absolute;
+  top: -120px; left: 30%;
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(239,127,21,.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+}
+.hero-left { animation: slideRight .75s cubic-bezier(.16,1,.3,1) .1s both; }
+.live-visitors {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap;
+  padding: 0 1.25rem;
+  border-left: 1px solid rgba(255,255,255,.08);
+  height: 100%;
+  flex-shrink: 0;
+}
+.live-visitors strong { color: #fff; font-weight: 800; }
+.live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: livePulse 1.8s ease infinite;
+}
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,.5); }
+  70%  { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(239,127,21,.1);
+  border: 1px solid rgba(239,127,21,.3);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 1.5rem;
+}
+.live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: blink 1.8s ease infinite;
+}
+.hero-left h1 {
+  font-size: clamp(30px, 3.5vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.25rem;
+}
+.hero-left h1 em {
+  color: var(--orange);
+  font-style: normal;
+}
+.hero-left p {
+  font-size: 17px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+.hero-left p strong { color: rgba(255,255,255,.85); }
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 16px 32px;
+  border-radius: 12px;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  animation: pulse 2.5s ease infinite;
+  white-space: nowrap;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(239,127,21,.45);
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--orange);
+  filter: blur(18px);
+  opacity: .5;
+  z-index: -1;
+  transform: translateY(6px) scaleX(.88);
+  transition: opacity .2s, transform .2s;
+}
+.btn-primary:hover {
+  background: var(--orange-dk);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(239,127,21,.5);
+}
+.btn-primary:hover::after { opacity: .7; transform: translateY(10px) scaleX(.92); }
+.hero-trust-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hero-trust {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.5);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.hero-trust::before {
+  content: '✓';
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+/* ── SERVICES TAGS ───────────────────────── */
+.services-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.services-tags .stag {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+  letter-spacing: .1px;
+}
+.services-tags.dark .stag {
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.services-tags.light .stag {
+  background: rgba(239,127,21,.08);
+  color: var(--orange-dk);
+  border: 1px solid rgba(239,127,21,.25);
+}
+
+/* ── GOOGLE MAPS REDESIGN ────────────────── */
+.hero-right { animation: slideLeft .75s cubic-bezier(.16,1,.3,1) .2s both; }
+
+.gmaps-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
+  position: relative;
+}
+
+/* Chrome macOS */
+.gmaps-topbar {
+  background: #2a2a2a;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gmaps-dots { display:flex; gap:6px; }
+.gmaps-dots span { width:11px; height:11px; border-radius:50%; }
+.gmaps-dots span:nth-child(1) { background:#ff5f57; }
+.gmaps-dots span:nth-child(2) { background:#febc2e; }
+.gmaps-dots span:nth-child(3) { background:#28c840; }
+.gmaps-url {
+  flex:1;
+  background:#3a3a3a;
+  border-radius:6px;
+  padding:4px 10px;
+  font-size:11px;
+  color:rgba(255,255,255,.45);
+  letter-spacing:.2px;
+  text-align:center;
+}
+
+/* Barre de recherche Google Maps */
+.gmaps-searchrow {
+  background: #fff;
+  padding: 7px 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.gmaps-search-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #f1f3f4;
+  border-radius: 22px;
+  padding: 5px 11px;
+  font-size: 11.5px;
+  color: #202124;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.gmaps-tabs {
+  display: flex;
+  gap: 0;
+  background: #fff;
+  padding: 0 10px;
+  border-bottom: 1px solid #e8eaed;
+}
+.gmaps-tab {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #1a73e8;
+  padding: 5px 8px;
+  border-bottom: 2px solid #1a73e8;
+  white-space: nowrap;
+}
+.gmaps-tab-off {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #5f6368;
+  padding: 5px 8px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+/* Body = sidebar + map */
+.gmaps-body { display:flex; height:auto; }
+
+/* ── SIDEBAR ── */
+.gmaps-list {
+  width: 46%;
+  border-right: 1px solid #e8eaed;
+  overflow: hidden;
+  background: #fff;
+}
+.gmaps-list-header {
+  padding: 6px 10px 5px;
+  font-size: 10px;
+  color: #5f6368;
+  font-weight: 600;
+  border-bottom: 1px solid #f1f3f4;
+}
+.gmap-item {
+  padding: 7px 10px;
+  border-bottom: 1px solid #f1f3f4;
+  cursor: pointer;
+  transition: background .15s;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.gmap-item:hover { background: #f8f9fa; }
+.gmap-num-badge {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex; align-items:center; justify-content:center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  box-shadow: 0 2px 6px rgba(26,115,232,.4);
+}
+.gmap-info { flex: 1; min-width: 0; }
+.gmap-name   { font-size: 11.5px; font-weight: 700; color: #202124; margin-bottom: 1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.gmap-stars  { font-size: 9.5px; color: #e8710a; letter-spacing:.5px; }
+.gmap-rating { font-size: 9.5px; color: #5f6368; }
+.gmap-status { font-size: 9.5px; font-weight: 700; color: #188038; }
+
+.gmap-item.you-row {
+  background: #fff8f6;
+  border: 1.5px dashed #d93025;
+  border-radius: 6px;
+  margin: 4px 6px;
+}
+.gmap-item.you-row .gmap-num-badge { background: #d93025; box-shadow:0 2px 6px rgba(217,48,37,.35); }
+.gmap-item.you-row .gmap-name  { color: #d93025; }
+.gmap-item.you-row .gmap-status { color: #d93025; }
+.invis-badge {
+  display: inline-block;
+  background: #d93025;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 3px;
+}
+
+/* ── MAP ── */
+.gmaps-map-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  /* Fond carte Google Maps réaliste,grille de rues */
+  background-color: #e8e0d4;
+  background-image:
+    /* Rivière diagonale */
+    linear-gradient(135deg, transparent 62%, #aad4f5 62%, #aad4f5 70%, transparent 70%),
+    /* Artère principale horizontale */
+    linear-gradient(180deg, transparent 44%, #f5d98c 44%, #f5d98c 50%, transparent 50%),
+    /* Artère secondaire horizontale */
+    linear-gradient(180deg, transparent 68%, #ffffff 68%, #ffffff 72%, transparent 72%),
+    linear-gradient(180deg, transparent 22%, #ffffff 22%, #ffffff 25%, transparent 25%),
+    /* Rues verticales */
+    linear-gradient(90deg, transparent 30%, #ffffff 30%, #ffffff 33%, transparent 33%),
+    linear-gradient(90deg, transparent 55%, #ffffff 55%, #ffffff 58%, transparent 58%),
+    linear-gradient(90deg, transparent 78%, #ffffff 78%, #ffffff 80%, transparent 80%),
+    /* Parc */
+    radial-gradient(ellipse 30% 20% at 18% 15%, #c5dfa0 0%, #c5dfa0 85%, transparent 86%),
+    /* Bloc de bâtiments,textures */
+    repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(0,0,0,.025) 18px, rgba(0,0,0,.025) 19px),
+    repeating-linear-gradient(90deg, transparent, transparent 22px, rgba(0,0,0,.025) 22px, rgba(0,0,0,.025) 23px);
+  min-height: 220px;
+}
+/* Labels de rues */
+.map-street-label {
+  position: absolute;
+  font-size: 8px;
+  font-weight: 600;
+  color: #6b6b6b;
+  letter-spacing: .3px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+/* Vignette effet */
+.map-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.15) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── PINS ── */
+@keyframes pinPulse {
+  0%   { transform: translate(-50%,-50%) scale(1);   opacity:.7; }
+  100% { transform: translate(-50%,-50%) scale(2.8); opacity:0; }
+}
+.map-marker {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  z-index: 5;
+  cursor: pointer;
+}
+.map-marker-pulse {
+  position: absolute;
+  bottom: 0; left: 50%;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pinPulse 2s ease-out infinite;
+  z-index: 0;
+}
+.map-marker-body {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.35));
+}
+.map-marker.you-marker .map-marker-body {
+  filter: grayscale(1) opacity(.45) drop-shadow(0 2px 4px rgba(0,0,0,.2));
+}
+.map-marker.you-marker .map-marker-pulse { display:none; }
+
+/* Tooltip au survol */
+.map-marker-tip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #202124;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+  z-index: 10;
+}
+.map-marker:hover .map-marker-tip { opacity: 1; }
+
+/* ═══════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════ */
+.stats-bar {
+  background: var(--dark);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(239,127,21,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.stat-item {
+  padding: 2.25rem 2rem;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.07);
+  position: relative;
+  overflow: hidden;
+  transition: background .25s;
+  cursor: default;
+}
+.stat-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%; height: 2px;
+  background: var(--orange);
+  border-radius: 2px 2px 0 0;
+  transition: transform .3s cubic-bezier(.16,1,.3,1);
+}
+.stat-item:hover::after { transform: translateX(-50%) scaleX(1); }
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(255,255,255,.03); }
+
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(239,127,21,.12);
+  border: 1px solid rgba(239,127,21,.2);
+  display: flex; align-items:center; justify-content:center;
+  margin: 0 auto .75rem;
+  transition: background .25s, transform .25s;
+}
+.stat-item:hover .stat-icon {
+  background: rgba(239,127,21,.2);
+  transform: translateY(-2px);
+}
+
+.stat-num {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--orange);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 6px;
+  transition: transform .25s;
+}
+.stat-item:hover .stat-num { transform: scale(1.06); }
+
+.stat-lbl {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.45);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION GÉNÉRIQUE
+═══════════════════════════════════════════ */
+.section {
+  padding: 64px 0;
+  background-image: linear-gradient(rgba(0,0,0,.028) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.section-alt {
+  background-color: var(--white);
+  background-image: linear-gradient(rgba(0,0,0,.028) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.section-dark { background: var(--dark); padding:64px 0; }
+.section-no-grid { background-image: none; }
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+.section-tag::before {
+  content:'';
+  display:inline-block;
+  width:18px; height:2px;
+  background:var(--orange);
+  border-radius:2px;
+}
+h2.section-title {
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+h2.section-title em { color:var(--orange); font-style:normal; }
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+/* ═══════════════════════════════════════════
+   CALCULATEUR
+═══════════════════════════════════════════ */
+.calc-section { background: var(--dark); padding: 80px 0; }
+.calc-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.calc-header h2 { color:#fff; }
+.calc-header .section-sub { color:rgba(255,255,255,.45); margin:0 auto; }
+.calc-steps-indicator {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:1.5rem;
+}
+.csi-dot {
+  width:8px; height:8px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  transition:all .3s;
+}
+.csi-dot.active { background:var(--orange); transform:scale(1.35); }
+.csi-dot.done   { background:rgba(255,255,255,.45); }
+
+/* Questions une par une */
+.calc-questions {
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+  margin-bottom: 2rem;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.q-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: border-color .25s, padding .35s, background .25s;
+}
+/* Question pas encore atteinte */
+.q-card.q-hidden {
+  display: none;
+}
+/* Question répondue,affichée en résumé compact + cliquable */
+.q-card.q-done {
+  padding: .875rem 1.25rem;
+  background: rgba(239,127,21,.07);
+  border-color: rgba(239,127,21,.35);
+  cursor: pointer;
+}
+.q-card.q-done:hover {
+  background: rgba(239,127,21,.12);
+  border-color: rgba(239,127,21,.6);
+}
+.q-card.q-done .btn-group { display: none; }
+.q-card.q-done .q-head    { margin-bottom: 0; }
+.q-done-row {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 36px;
+  margin-top: 4px;
+}
+.q-card.q-done .q-done-row { display: flex; }
+.q-done-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange);
+}
+.q-done-value::before { content: '✓ '; }
+.q-edit-hint {
+  font-size: 11px;
+  color: rgba(255,255,255,.3);
+  font-style: italic;
+}
+/* Animation d'entrée d'une nouvelle question */
+@keyframes slideDown {
+  from { opacity:0; transform:translateY(-18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.q-card.q-enter { animation: slideDown .4s cubic-bezier(.16,1,.3,1) both; }
+.q-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.q-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.q-text {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: rgba(255,255,255,.9);
+  line-height: 1.45;
+}
+.btn-group { display:flex; flex-direction:column; gap:7px; }
+.calc-btn {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: rgba(255,255,255,.7);
+  text-align: left;
+  transition: all .18s;
+}
+.calc-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange-lt);
+  background: rgba(239,127,21,.06);
+}
+.calc-btn.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(239,127,21,.4);
+}
+
+.autre-input-wrap {
+  display: flex; gap: 8px; align-items: center; margin-top: 4px;
+}
+.autre-input {
+  flex: 1;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1.5px solid rgba(255,255,255,.2);
+  border-radius: var(--r-sm);
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  outline: none;
+  transition: border-color .18s;
+}
+.autre-input:focus { border-color: var(--orange); }
+.autre-input::placeholder { color: rgba(255,255,255,.35); }
+.autre-confirm {
+  padding: 9px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background .18s;
+  white-space: nowrap;
+}
+.autre-confirm:hover { background: var(--orange-dk); }
+
+/* Résultat */
+.calc-result {
+  display: none;
+  background: linear-gradient(135deg, #1a0900 0%, #160800 100%);
+  border: 2px solid var(--orange);
+  border-radius: var(--r);
+  padding: 2.5rem;
+  animation: scaleIn .4s cubic-bezier(.16,1,.3,1) both;
+}
+.calc-result-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.result-left { text-align:center; }
+.result-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--orange);
+  margin-bottom: .6rem;
+}
+.result-amount {
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -2.5px;
+  line-height: 1;
+  margin-bottom: .4rem;
+}
+.result-sub { font-size:13px; color:rgba(255,255,255,.5); }
+.result-right { display:flex; flex-direction:column; gap:.75rem; }
+.result-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: var(--r-sm);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(239,127,21,.45);
+}
+.result-expl {
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+.result-cta {
+  background: var(--orange);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 800;
+  padding: 14px 28px;
+  border-radius: 10px;
+  display: inline-block;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  animation: pulse 2.5s ease infinite;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(239,127,21,.45);
+}
+.result-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--orange);
+  filter: blur(16px);
+  opacity: .5;
+  z-index: -1;
+  transform: translateY(6px) scaleX(.88);
+  transition: opacity .2s, transform .2s;
+}
+.result-cta:hover {
+  background: var(--orange-dk);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(239,127,21,.5);
+}
+.result-cta:hover::after { opacity: .7; transform: translateY(9px) scaleX(.92); }
+
+/* ═══════════════════════════════════════════
+   DIAGNOSTIC,4 cartes
+═══════════════════════════════════════════ */
+/* ── FRISE CHRONOLOGIQUE DIAGNOSTIC ────────── */
+.diag-timeline {
+  position: relative;
+  margin-top: 3.5rem;
+  padding-bottom: 1rem;
+}
+.diag-tl-track {
+  position: relative;
+}
+.diag-tl-line {
+  position: absolute;
+  top: 68px;
+  left: calc(12.5% + 1.5rem);
+  right: calc(12.5% + 1.5rem);
+  height: 4px;
+  background: linear-gradient(90deg, #F5A84A 0%, #7D3F05 100%);
+  border-radius: 2px;
+  z-index: 0;
+}
+.diag-tl-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.diag-tl-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.diag-tl-step.tl-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.diag-tl-cone {
+  width: 52px;
+  filter: drop-shadow(0 5px 10px rgba(239,127,21,.35));
+  transition: transform .25s ease;
+}
+.diag-tl-step:hover .diag-tl-cone { transform: translateY(-5px); }
+.diag-tl-dot {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 13px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 4px #fff, 0 4px 12px rgba(239,127,21,.35);
+  margin: 10px 0 14px;
+  position: relative; z-index: 2;
+}
+.diag-tl-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: var(--sh);
+  width: 100%;
+  transition: transform .25s, box-shadow .25s;
+}
+.diag-tl-step:hover .diag-tl-card {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-lg);
+}
+.diag-tl-tag {
+  font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--orange); margin-bottom: .4rem;
+}
+.diag-tl-title {
+  font-size: 14px; font-weight: 800;
+  color: var(--text); margin-bottom: .4rem;
+}
+.diag-tl-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .diag-tl-steps { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .diag-tl-line { display: none; }
+}
+@media (max-width: 480px) {
+  .diag-tl-steps { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION SAISONNIÈRE
+═══════════════════════════════════════════ */
+.saison-section {
+  background: var(--dark);
+  padding: 80px 0;
+  overflow: hidden;
+}
+.saison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+}
+/* Visuel source unique */
+.source-visual {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+}
+.source-header {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 1.75rem;
+  font-weight: 700;
+}
+.source-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.source-row { display: flex; flex-direction: column; gap: .4rem; }
+.source-name {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,.45);
+}
+.source-track {
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+  height: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.source-fill {
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: .85rem;
+  font-size: .82rem;
+  font-weight: 800;
+  color: #fff;
+}
+.source-fill-dominant { background: var(--orange); width: 90%; }
+.source-fill-absent   { width: 0; }
+.source-absent-tag {
+  position: absolute;
+  left: 1rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.22);
+  font-style: italic;
+}
+.source-risk {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  background: rgba(239,127,21,.07);
+  border: 1px solid rgba(239,127,21,.22);
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  font-size: .85rem;
+  color: rgba(255,255,255,.6);
+  line-height: 1.55;
+}
+.source-risk-icon { font-size: 1rem; flex-shrink: 0; margin-top: .1rem; }
+.source-risk strong { color: #fff; }
+
+/* Texte droite */
+.saison-text .section-tag { color: var(--orange); }
+.saison-text .section-title { color: #fff; margin-top: .5rem; }
+.saison-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.75;
+  margin-top: 1.25rem;
+  max-width: 520px;
+}
+.saison-sub strong { color: #fff; }
+.saison-quote {
+  margin-top: 1.75rem;
+  background: rgba(255,255,255,.05);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.7;
+}
+.saison-quote em { color: rgba(255,255,255,.85); font-style: italic; }
+.saison-quote-icon { margin-right: 4px; }
+.saison-quote-rep {
+  display: block;
+  margin-top: .4rem;
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .saison-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .saison-sub { max-width: 100%; }
+  .source-visual { padding: 1.25rem; order: 1; }
+  .saison-text { order: -1; }
+}
+
+/* ═══════════════════════════════════════════
+   SOCIAL PROOF,témoignage + agence
+═══════════════════════════════════════════ */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+/* Carousel témoignages */
+.carousel-wrap {
+  background: var(--dark);
+  border-radius: var(--r);
+  padding: 2rem 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.carousel-wrap::before {
+  content: '"';
+  position: absolute;
+  top: 8px; right: 20px;
+  font-size: 100px;
+  color: rgba(239,127,21,.1);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+.carousel-track {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+}
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .6s ease;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+.carousel-slide.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+.temo-stars { color:#FBBF24; font-size:15px; letter-spacing:2px; margin-bottom:.75rem; }
+.temo-date  { font-size:11px; color:rgba(255,255,255,.3); margin-bottom:.75rem; font-weight:500; }
+.temo-text {
+  font-size: 14.5px;
+  color: rgba(255,255,255,.75);
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+.temo-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.temo-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dk));
+  display: flex; align-items:center; justify-content:center;
+  font-size:15px; font-weight:800; color:#fff;
+  flex-shrink:0;
+}
+.temo-name { font-size:14px; font-weight:700; color:#fff; }
+.temo-role { font-size:12px; color:rgba(255,255,255,.4); margin-top:1px; }
+/* Indicateurs + nav */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.carousel-dots {
+  display: flex;
+  gap: 6px;
+}
+.c-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  cursor: pointer;
+  transition: background .3s, transform .3s;
+  border: none;
+}
+.c-dot.active { background: var(--orange); transform: scale(1.3); }
+.carousel-nav {
+  display: flex;
+  gap: 6px;
+}
+.c-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.6);
+  display: flex; align-items:center; justify-content:center;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  font-size: 14px;
+}
+.c-btn:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+/* Carte agence */
+.agence-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  box-shadow: var(--sh);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.agence-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.agence-brand-icon {
+  width: 52px; height: 52px;
+  display: flex; align-items:center; justify-content:center;
+  flex-shrink: 0;
+}
+.agence-brand-name { font-size:16px; font-weight:900; letter-spacing:-.3px; }
+.agence-brand-tag  { font-size:11.5px; font-weight:700; color:var(--orange); margin-top:2px; }
+.agence-desc {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.75;
+}
+.agence-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  margin-top: auto;
+}
+.agence-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 14px 10px;
+  text-align: center;
+}
+.agence-stat-num { font-size:22px; font-weight:900; color:var(--orange); letter-spacing:-.5px; margin-bottom:3px; }
+.agence-stat-lbl { font-size:10.5px; color:var(--muted); line-height:1.4; }
+
+/* ═══════════════════════════════════════════
+   URGENCY
+═══════════════════════════════════════════ */
+.urgency-strip {
+  background: linear-gradient(135deg, #FFF5F0, #FEF0E8);
+  border: 1px solid rgba(239,127,21,.2);
+  border-radius: var(--r);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2.5rem;
+  text-align: center;
+}
+.urgency-icon { font-size:22px; }
+.urgency-text { font-size:14px; color:#7A2E00; line-height:1.5; }
+.urgency-text strong { font-weight:800; }
+
+/* Slot counter */
+.slot-counter-link { text-decoration: none; cursor: pointer; }
+.slot-counter-link:hover { opacity: .85; }
+.slot-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239,127,21,.12);
+  border: 1px solid rgba(239,127,21,.35);
+  border-radius: 8px;
+  padding: 4px 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.slot-drum {
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  overflow: hidden;
+  position: relative;
+}
+.slot-drum-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.slot-drum-inner span {
+  display: block;
+  height: 22px;
+  line-height: 22px;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--orange);
+  text-align: center;
+}
+.slot-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7A2E00;
+  white-space: nowrap;
+}
+.places-num {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--orange);
+  transition: transform .2s, opacity .2s;
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════════
+   OBJECTIONS
+═══════════════════════════════════════════ */
+.objections-section { padding: 80px 0; }
+.objections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.objection-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  box-shadow: var(--sh);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform .25s, box-shadow .25s;
+}
+.objection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-lg);
+}
+.obj-quote {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.55;
+  font-style: italic;
+  position: relative;
+}
+.obj-quote-mark {
+  font-size: 52px;
+  line-height: 0;
+  vertical-align: -18px;
+  color: var(--orange);
+  font-style: normal;
+  font-weight: 900;
+  margin-right: 2px;
+  opacity: .35;
+}
+.obj-separator {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.obj-sep-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.obj-sep-icon {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.obj-reponse {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.obj-reponse strong {
+  color: var(--text);
+  font-weight: 800;
+  display: block;
+  margin-bottom: .3rem;
+}
+
+
+/* ═══════════════════════════════════════════
+   CTA SECTION
+═══════════════════════════════════════════ */
+.cta-section {
+  background: linear-gradient(140deg, var(--orange) 0%, var(--orange-dk) 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 700px 500px at 15% 60%, rgba(255,255,255,.10) 0%, transparent 65%),
+    radial-gradient(ellipse 500px 500px at 88% 25%, rgba(0,0,0,.13) 0%, transparent 60%),
+    radial-gradient(ellipse 350px 350px at 65% 85%, rgba(255,255,255,.07) 0%, transparent 60%);
+  pointer-events:none; z-index:0;
+}
+.cta-section::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none; z-index: 0;
+}
+.cta-bg-art {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+  overflow: hidden;
+}
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  position: relative;
+}
+.cta-urgence {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 99px;
+  padding: 5px 14px 5px 10px;
+  margin-bottom: 1rem;
+}
+.cta-urgence::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.3);
+  animation: pulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.cta-left h2 {
+  font-size: clamp(28px,3vw,44px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1.18;
+  margin-bottom: 1rem;
+}
+.cta-left p {
+  font-size: 16px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.75;
+}
+.cta-right { display:flex; flex-direction:column; gap:1rem; align-items:center; }
+.cta-main-btn {
+  background: #fff;
+  color: var(--orange);
+  font-size: 16px;
+  font-weight: 900;
+  padding: 18px 36px;
+  border-radius: 12px;
+  width: 100%;
+  transition: transform .2s, box-shadow .2s;
+  text-align: center;
+  animation: pulse 2.5s ease infinite;
+  letter-spacing: -.2px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(255,255,255,.25);
+}
+.cta-main-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255,255,255,.9);
+  filter: blur(20px);
+  opacity: .4;
+  z-index: -1;
+  transform: translateY(7px) scaleX(.88);
+  transition: opacity .2s, transform .2s;
+}
+.cta-main-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(255,255,255,.35);
+}
+.cta-main-btn:hover::after { opacity: .6; transform: translateY(10px) scaleX(.93); }
+.cta-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+.cta-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: rgba(255,255,255,.75);
+  font-weight: 500;
+}
+.cta-check::before { content:'✓'; color:rgba(255,255,255,.5); font-weight:700; }
+.cta-detail-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.cta-detail-item {
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--dark2);
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 48px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+.footer-brand-name { font-size:16px; font-weight:900; color:#fff; margin-bottom:.4rem; }
+.footer-brand-tag  { font-size:11.5px; font-weight:700; color:var(--orange); margin-bottom:1rem; letter-spacing:.3px; }
+.footer-brand-desc { font-size:13px; color:rgba(255,255,255,.35); line-height:1.7; }
+.footer-socials { display:flex; gap:10px; margin-top:1rem; }
+.footer-social-link {
+  display: flex; align-items:center; justify-content:center;
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.4);
+  transition: border-color .2s, color .2s, background .2s;
+}
+.footer-social-link:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(239,127,21,.08);
+}
+.footer-col-title  { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.4); margin-bottom:.75rem; }
+.footer-link {
+  display:block;
+  font-size:13.5px;
+  color:rgba(255,255,255,.5);
+  text-decoration:none;
+  margin-bottom:.5rem;
+  transition:color .15s;
+}
+.footer-link:hover { color:var(--orange); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.footer-copy { font-size:12px; color:rgba(255,255,255,.25); }
+.footer-disclaimer {
+  border-top: 1px solid rgba(255,255,255,.05);
+  margin-top: 1rem;
+  padding-top: .875rem;
+  font-size: 10.5px;
+  color: rgba(255,255,255,.18);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════
+   FLÈCHES INTER-SECTIONS
+═══════════════════════════════════════════ */
+.section-arrow {
+  display: flex;
+  justify-content: center;
+  margin: -8px 0;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+@media (max-width: 768px) { .section-arrow { display: none; } }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE,TABLET
+═══════════════════════════════════════════ */
+/* ── Décompte prix ─────────────────────── */
+#stat-countdown { display: inline-block; transition: color .4s; }
+#stat-countdown.struck { color: var(--orange); }
+
+@media (max-width: 1024px) {
+  .hero-grid    { gap: 2.5rem; }
+  .stats-grid   { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid  { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-grid > *:first-child { grid-column: 1 / -1; }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE,MOBILE
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .wrap { padding: 0 1.1rem; }
+  .topbar { display:none; }
+  nav { top:0; }
+  .nav-inner { height:58px; padding: 0 1rem; gap: .5rem; }
+  .nav-logo-sub { display: none; }
+  .nav-reveal-text { display: none; }
+  .nav-reveal-text-group { display: none; }
+  .nav-cta-long { display: none; }
+  .nav-cta-short { display: flex; align-items: center; justify-content: center; }
+  .nav-cta { width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+  .nav-reveal-link { width: 44px; height: 44px; padding: 0; justify-content: center; gap: 0; }
+
+  /* Hero mobile : 1 colonne */
+  .hero-section { padding: 48px 0 24px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-left h1 { font-size: 30px; letter-spacing:-.8px; }
+  .hero-left p  { font-size: 15px; }
+  .hero-right   { order: 1; }
+  .gmaps-body   { height: 200px; }
+  .gmaps-tabs   { display: none; }
+
+  /* Stats */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item  { padding: 1.5rem 1rem; border-right: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); }
+  .stat-item:nth-child(2n) { border-right: none; }
+  .stat-num   { font-size: 32px; }
+
+  /* Section */
+  .section, .section-alt, .calc-section, .cta-section, .section-dark { padding: 40px 0; }
+  .saison-section { padding-top: 32px; }
+
+  /* Cartes : padding réduit */
+  .offre-card { padding: 1.5rem 1.25rem; }
+  .offre-grid { margin-top: 1.75rem; gap: 1rem; }
+  .carousel-wrap { padding: 1.5rem 1.25rem 1.25rem; }
+  .agence-card { padding: 1.5rem 1.25rem; }
+  .team-card { padding: 1.1rem; gap: .75rem; }
+  .faq-q { padding: .9rem 1rem; font-size: 13.5px; }
+
+  /* Calc */
+  .calc-result-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  /* Diag */
+  .diag-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Proof */
+  .proof-grid { grid-template-columns: 1fr; }
+
+  /* CTA */
+  .cta-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .cta-checks { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+}
+
+@media (max-width: 480px) {
+  .diag-grid { grid-template-columns: 1fr; }
+  .hero-cta-row { flex-direction:column; align-items:flex-start; }
+  .btn-primary { width:100%; text-align:center; }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION ÉQUIPE
+═══════════════════════════════════════════ */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.team-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  box-shadow: var(--sh);
+  transition: transform .25s, box-shadow .25s;
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-lg);
+}
+.team-card-full {
+  grid-column: 1 / -1;
+  max-width: 560px;
+  margin: 0 auto;
+  width: 100%;
+}
+.team-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.team-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.team-badge {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+}
+.team-info { flex: 1; min-width: 0; }
+.team-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: .15rem;
+}
+.team-role {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .6rem;
+}
+.team-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: .75rem;
+}
+.team-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.team-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text);
+  background: rgba(239,127,21,.08);
+  border: 1px solid rgba(239,127,21,.2);
+  border-radius: 20px;
+  padding: .2rem .6rem;
+  letter-spacing: .03em;
+}
+
+.mid-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+.mid-cta .btn-primary { font-size: 15px; padding: .9rem 2rem; }
+@media (max-width: 640px) {
+  .mid-cta .btn-primary { width: 100%; text-align: center; }
+}
+
+@media (max-width: 640px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .team-card-full { max-width: 100%; }
+  .team-card { padding: 1.1rem; gap: .75rem; }
+  .team-photo { width: 52px; height: 52px; border-radius: 8px; }
+  .team-badge { width: 18px; height: 18px; bottom: -4px; right: -4px; }
+  .team-badge svg { width: 9px; height: 9px; }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION OFFRE
+═══════════════════════════════════════════ */
+.offre-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.offre-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--sh);
+  position: relative;
+  transition: transform .25s, box-shadow .25s;
+}
+.offre-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sh-lg);
+}
+.offre-card-featured {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(239,127,21,.1), var(--sh-lg);
+}
+.offre-featured-label {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: .3rem .85rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.offre-speed-label {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--orange);
+  border: 1.5px solid var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: .3rem .85rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.offre-icon {
+  width: 44px; height: 44px;
+  background: rgba(239,127,21,.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.garantie-icon {
+  width: 44px; height: 44px;
+  background: rgba(239,127,21,.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.offre-delay {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--orange);
+}
+.offre-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+}
+.offre-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.offre-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+.offre-list li {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  line-height: 1.5;
+}
+.offre-list li::before {
+  content: '✓';
+  color: var(--orange);
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: .05em;
+}
+
+/* Process 3 étapes */
+.process-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  background: var(--surface, #f8f8f6);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.75rem 2.5rem;
+  flex-wrap: wrap;
+}
+.process-step {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+.process-num {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(239,127,21,.35);
+}
+.process-txt {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.45;
+}
+.process-txt strong { display: block; color: var(--text); }
+.process-arrow {
+  font-size: 1.25rem;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* Badge service sur les témoignages */
+.temo-service {
+  display: inline-block;
+  background: rgba(239,127,21,.1);
+  border: 1px solid rgba(239,127,21,.25);
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  padding: .25rem .65rem;
+  border-radius: 20px;
+  margin-bottom: .6rem;
+}
+
+/* CTA process steps */
+.cta-process {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.cta-process-step {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  font-size: 13.5px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.5;
+}
+.cta-process-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+.cta-process-step strong { color: #fff; }
+
+/* Pont calculateur → CTA */
+.result-bridge {
+  background: rgba(239,127,21,.12);
+  border: 1px solid rgba(239,127,21,.4);
+  border-radius: 10px;
+  padding: .85rem 1.1rem;
+  font-size: 13.5px;
+  color: rgba(255,255,255,.85);
+  line-height: 1.6;
+  margin-bottom: .85rem;
+}
+.result-bridge strong { color: var(--orange); font-weight: 700; }
+.result-bridge em { font-style: italic; color: rgba(255,255,255,.7); }
+
+/* Garantie résultats */
+.garantie-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: #fff;
+  border: 2px solid var(--orange);
+  border-radius: var(--r);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 24px rgba(239,127,21,.12);
+}
+.garantie-body {}
+.garantie-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: .35rem;
+}
+.garantie-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.garantie-desc strong { color: var(--text); }
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: 2.5rem;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.faq-item:hover { box-shadow: var(--sh); }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.1rem 1.25rem;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: inherit;
+}
+.faq-q:hover { background: rgba(0,0,0,.02); }
+.faq-chevron {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: transform .25s;
+}
+.faq-item.open .faq-chevron { transform: rotate(45deg); }
+.faq-a {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.75;
+  padding: 0 1.25rem 1.1rem;
+  display: none;
+}
+.faq-a strong { color: var(--text); }
+.faq-item.open .faq-a { display: block; }
+
+@media (max-width: 768px) {
+  .offre-grid { grid-template-columns: 1fr; }
+  .process-strip { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .process-arrow { transform: rotate(90deg); align-self: center; }
+  .garantie-strip { flex-direction: column; gap: .75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TICKER + NAV (wrapper sticky)
+══════════════════════════════════════ -->
+<div class="header-sticky">
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="ticker-wrap">
+      <div class="ticker-inner">
+        <span class="ticker-item">+25 artisans BTP accompagnés en France <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Fiche Google · Site Web · Référencement · Réseaux Sociaux · Publicités Meta Ads · Branding et Identité visuelle</span>
+        <span class="ticker-item"><span>100%</span> spécialisée BTP <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Diagnostic Visibilité <span>· 30 minutes</span></span>
+        <span class="ticker-item">Agence de marketing · France entière <span class="ticker-dot"></span></span>
+        <span class="ticker-item">+25 artisans BTP accompagnés en France <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Fiche Google · Site Web · Référencement · Réseaux Sociaux · Publicités Meta Ads · Branding et Identité visuelle</span>
+        <span class="ticker-item"><span>100%</span> spécialisée BTP <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Diagnostic Visibilité <span>· 30 minutes</span></span>
+        <span class="ticker-item">Agence de marketing · France entière <span class="ticker-dot"></span></span>
+      </div>
+    </div>
+    <div class="live-visitors">
+      <span class="live-dot"></span>
+      Actuellement, <strong id="visitorCount">6</strong> artisans sur cette page
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg height="36" viewBox="0 0 346 245" xmlns="http://www.w3.org/2000/svg" style="width:auto;display:block;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+        <g transform="matrix(1,0,0,1,-1154.8,-2551.12)">
+          <g transform="matrix(3.67871,0,0,3.66051,-8358.66,-347.046)"><path d="M2649.63,796.531C2666.39,796.531 2679.99,810.139 2679.99,826.896C2679.99,843.653 2666.39,857.261 2649.63,857.261C2632.87,857.261 2619.27,843.653 2619.27,826.896C2619.27,810.139 2632.87,796.531 2649.63,796.531ZM2649.63,799.232C2634.36,799.232 2621.96,811.626 2621.96,826.896C2621.96,842.167 2634.36,854.561 2649.63,854.561C2664.9,854.561 2677.3,842.167 2677.3,826.896C2677.3,811.626 2664.9,799.232 2649.63,799.232Z" style="fill:rgb(239,127,21);"/></g>
+          <g transform="matrix(3.99059,0,0,4.0488,-9298.48,-674.59)"><path d="M2667.29,851.358C2662.33,854.96 2656.22,857.086 2649.63,857.086C2632.98,857.086 2619.49,843.545 2619.49,826.896C2619.49,810.248 2632.98,796.707 2649.63,796.707C2657.28,796.707 2664.27,799.568 2669.58,804.276C2669.88,804.536 2669.64,803.878 2669.58,804.276C2669.53,804.673 2668.1,804.542 2666.77,804.943C2658.04,807.571 2650.67,818.577 2650.67,828.351C2650.67,837.264 2659.55,848.159 2667.29,851.358C2667.65,851.507 2667.76,849.945 2667.77,850.346C2667.79,850.747 2667.61,851.128 2667.29,851.358ZM2664.55,850.412C2657.66,845.558 2650.67,837.466 2650.67,828.351C2650.67,818.292 2658.64,809.54 2666.77,804.943C2662.04,801.253 2656.09,799.056 2649.63,799.056C2634.25,799.056 2621.74,811.518 2621.74,826.896C2621.74,842.275 2634.25,854.737 2649.63,854.737C2655.12,854.737 2660.24,853.151 2664.55,850.412Z" style="fill:rgb(255,255,255);"/></g>
+          <g transform="matrix(0.797708,0,0,1,-821.671,547.548)"><path d="M2890.06,2075.96C2894.95,2084.25 2898.79,2093.22 2901.4,2102.7L2901.4,2161.56C2898.79,2171.04 2894.95,2180.01 2890.06,2188.3L2890.06,2075.96Z" style="fill:rgb(239,127,21);"/></g>
+          <g transform="matrix(0.68357,0,0,1,-502.577,546.811)"><path d="M2858.68,2041.76C2865.26,2046.45 2871.3,2051.83 2876.7,2057.8L2876.7,2206.46C2871.3,2212.43 2865.26,2217.81 2858.68,2222.5L2858.68,2041.76Z" style="fill:rgb(239,127,21);"/></g>
+          <g transform="matrix(1,0,0,1,-1405.13,547.69)"><path d="M2802.38,2242.95C2799.51,2243.17 2796.61,2243.28 2793.69,2243.28C2732.04,2243.28 2682.01,2193.47 2682.01,2132.13C2682.01,2070.79 2732.04,2020.98 2793.69,2020.98C2796.61,2020.98 2799.51,2021.09 2802.38,2021.31L2802.38,2242.95ZM2749.91,2040.69C2715.61,2056.99 2691.89,2091.82 2691.89,2132.13C2691.89,2168.72 2711.44,2200.81 2740.71,2218.6C2769.8,2197.33 2788.64,2164.12 2788.89,2126.72C2789.12,2092.88 2774.1,2062.26 2749.91,2040.69Z" style="fill:rgb(239,127,21);"/></g>
+          <g transform="matrix(0.71114,0,0,0.985832,-589.871,578.646)"><path d="M2822.1,2024.61C2829.13,2026.45 2835.9,2028.96 2842.32,2032.06L2842.32,2232.2C2835.9,2235.3 2829.13,2237.81 2822.1,2239.65L2822.1,2024.61Z" style="fill:rgb(239,127,21);"/></g>
+        </g>
+      </svg>
+      <div>
+        <div class="nav-logo-text">Agence de l'Ombre</div>
+        <div class="nav-logo-sub">Spécialiste BTP</div>
+      </div>
+    </a>
+    <a href="#calculateur" class="nav-reveal-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+      <span class="nav-reveal-text-group">
+        <span class="nav-reveal-text">Le Révélateur</span>
+        <span class="nav-reveal-sub">(clique ici)</span>
+      </span>
+    </a>
+    <a href="https://api.leadconnectorhq.com/widget/bookings/diagnostic-artisanszzpxy8wpazah" target="_blank" class="nav-cta" onclick="if(typeof fbq==='function')fbq('track','Lead')">
+      <span class="nav-cta-long">Réserver mon Diagnostic Visibilité →</span>
+      <span class="nav-cta-short">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.54-.54a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18z"/></svg>
+      </span>
+    </a>
+  </div>
+</nav>
+</div><!-- /.header-sticky -->
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero-section">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-glow"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <!-- Gauche : texte -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          Agence de l'Ombre · Spécialisée BTP
+        </div>
+        <h1>Pourquoi certains artisans sont <em>complets</em>… et d'autres attendent que le téléphone sonne ?</h1>
+        <p>La différence, ce n'est pas la qualité du travail mais c'est <strong>QUI apparaît sur Google</strong> quand un client cherche un plombier, un électricien ou un carreleur près de chez lui.</p>
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="trackAndBook()">Réserver mon diagnostic visibilité →</button>
+          <div class="hero-trust-list">
+            <span class="hero-trust">Sans engagement</span>
+            <span class="hero-trust">30 minutes</span>
+          </div>
+        </div>
+        <div class="services-tags dark">
+          <span class="stag">Fiche Google</span>
+          <span class="stag">Site Web</span>
+          <span class="stag">Référencement</span>
+          <span class="stag">Publicités Méta Ads</span>
+          <span class="stag">Réseaux Sociaux</span>
+          <span class="stag">Shooting Chantiers</span>
+          <span class="stag">Identité visuelle</span>
+          <span class="stag">Branding</span>
+        </div>
+      </div>
+
+      <!-- Droite : Google Maps mock -->
+      <div class="hero-right">
+        <div class="gmaps-card">
+
+          <!-- Chrome macOS -->
+          <div class="gmaps-topbar">
+            <div class="gmaps-dots"><span></span><span></span><span></span></div>
+            <div class="gmaps-url">maps.google.com</div>
+          </div>
+
+          <!-- Barre de recherche -->
+          <div class="gmaps-searchrow">
+            <div class="gmaps-search-input">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5f6368" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              plombier Paris
+            </div>
+          </div>
+
+          <!-- Onglets -->
+          <div class="gmaps-tabs">
+            <div class="gmaps-tab">À proximité</div>
+            <div class="gmaps-tab-off">Itinéraire</div>
+            <div class="gmaps-tab-off">Enregistrer</div>
+          </div>
+
+          <div class="gmaps-body">
+
+            <!-- Sidebar résultats -->
+            <div class="gmaps-list">
+              <div class="gmaps-list-header">Résultats pour "plombier Paris"</div>
+
+              <div class="gmap-item">
+                <div class="gmap-num-badge">1</div>
+                <div class="gmap-info">
+                  <div class="gmap-name">Plomberie Martin</div>
+                  <div><span class="gmap-stars">★★★★★</span> <span class="gmap-rating">4.9 (127)</span></div>
+                  <div class="gmap-status">Ouvert · 0,4 km</div>
+                </div>
+              </div>
+
+              <div class="gmap-item">
+                <div class="gmap-num-badge">2</div>
+                <div class="gmap-info">
+                  <div class="gmap-name">Dupont Plomberie</div>
+                  <div><span class="gmap-stars">★★★★☆</span> <span class="gmap-rating">4.6 (89)</span></div>
+                  <div class="gmap-status">Ouvert · 0,7 km</div>
+                </div>
+              </div>
+
+              <div class="gmap-item">
+                <div class="gmap-num-badge">3</div>
+                <div class="gmap-info">
+                  <div class="gmap-name">Pro Plomb 75</div>
+                  <div><span class="gmap-stars">★★★★☆</span> <span class="gmap-rating">4.4 (52)</span></div>
+                  <div class="gmap-status">Ouvert · 1,1 km</div>
+                </div>
+              </div>
+
+              <div class="gmap-item you-row">
+                <div class="gmap-num-badge">?</div>
+                <div class="gmap-info">
+                  <div class="gmap-name">Toi ?</div>
+                  <div class="invis-badge">Invisible</div>
+                  <div class="gmap-status" style="font-size:10px;font-weight:500;color:#d93025;margin-top:2px;">Hors des résultats</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carte -->
+            <div class="gmaps-map-area">
+              <!-- Labels de rues -->
+              <div class="map-street-label" style="top:46%;left:4%;transform:translateY(-50%)">Rue de Rivoli</div>
+              <div class="map-street-label" style="top:70%;left:4%;transform:translateY(-50%)">Bd Haussmann</div>
+              <div class="map-street-label" style="top:22%;left:4%;transform:translateY(-50%);font-size:7px;opacity:.7">Rue St-Honoré</div>
+              <div class="map-street-label" style="top:8%;left:32%;transform:rotate(90deg);transform-origin:left center">Rue du Louvre</div>
+              <div class="map-street-label" style="top:8%;left:57%;transform:rotate(90deg);transform-origin:left center">Av. de l'Opéra</div>
+              <div class="map-street-label" style="top:6%;left:14%;font-size:7px;color:#5a9e5a;font-weight:700">Jardin des Tuileries</div>
+
+              <!-- Pins concurrents -->
+              <div class="map-marker" style="top:30%;left:38%;">
+                <div class="map-marker-pulse"></div>
+                <div class="map-marker-body">
+                  <svg viewBox="0 0 28 38" width="28" height="38" fill="none">
+                    <path d="M14 0C6.3 0 0 6.3 0 14c0 9.8 14 24 14 24s14-14.2 14-24C28 6.3 21.7 0 14 0z" fill="#EF7F15"/>
+                    <circle cx="14" cy="14" r="7" fill="white"/>
+                    <text x="14" y="18" text-anchor="middle" fill="#EF7F15" font-size="9" font-weight="900" font-family="Inter,sans-serif">1</text>
+                  </svg>
+                </div>
+                <div class="map-marker-tip">Plomberie Martin</div>
+              </div>
+
+              <div class="map-marker" style="top:20%;left:68%;">
+                <div class="map-marker-pulse" style="animation-delay:.7s;"></div>
+                <div class="map-marker-body">
+                  <svg viewBox="0 0 28 38" width="28" height="38" fill="none">
+                    <path d="M14 0C6.3 0 0 6.3 0 14c0 9.8 14 24 14 24s14-14.2 14-24C28 6.3 21.7 0 14 0z" fill="#EF7F15"/>
+                    <circle cx="14" cy="14" r="7" fill="white"/>
+                    <text x="14" y="18" text-anchor="middle" fill="#EF7F15" font-size="9" font-weight="900" font-family="Inter,sans-serif">2</text>
+                  </svg>
+                </div>
+                <div class="map-marker-tip">Dupont Plomberie</div>
+              </div>
+
+              <div class="map-marker" style="top:55%;left:22%;">
+                <div class="map-marker-pulse" style="animation-delay:1.4s;"></div>
+                <div class="map-marker-body">
+                  <svg viewBox="0 0 28 38" width="28" height="38" fill="none">
+                    <path d="M14 0C6.3 0 0 6.3 0 14c0 9.8 14 24 14 24s14-14.2 14-24C28 6.3 21.7 0 14 0z" fill="#EF7F15"/>
+                    <circle cx="14" cy="14" r="7" fill="white"/>
+                    <text x="14" y="18" text-anchor="middle" fill="#EF7F15" font-size="9" font-weight="900" font-family="Inter,sans-serif">3</text>
+                  </svg>
+                </div>
+                <div class="map-marker-tip">Pro Plomb 75</div>
+              </div>
+
+              <!-- Pin "Toi" invisible -->
+              <div class="map-marker you-marker" style="top:44%;left:58%;">
+                <div class="map-marker-body">
+                  <svg viewBox="0 0 28 38" width="22" height="30" fill="none">
+                    <path d="M14 0C6.3 0 0 6.3 0 14c0 9.8 14 24 14 24s14-14.2 14-24C28 6.3 21.7 0 14 0z" fill="#888"/>
+                    <circle cx="14" cy="14" r="7" fill="white"/>
+                    <text x="14" y="18" text-anchor="middle" fill="#aaa" font-size="10" font-weight="900" font-family="Inter,sans-serif">?</text>
+                  </svg>
+                </div>
+                <div class="map-marker-tip">Toi, introuvable</div>
+              </div>
+
+              <!-- Vignette -->
+              <div class="map-vignette"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION SAISONNIÈRE
+══════════════════════════════════════ -->
+<section class="saison-section">
+  <div class="wrap">
+    <div class="saison-grid">
+
+      <!-- Colonne gauche : sources -->
+      <div class="source-visual reveal">
+        <div class="source-header">D'où viennent tes chantiers ?</div>
+        <div class="source-bars">
+          <div class="source-row">
+            <div class="source-name">Bouche-à-oreille</div>
+            <div class="source-track">
+              <div class="source-fill source-fill-dominant">~90 %</div>
+            </div>
+          </div>
+          <div class="source-row">
+            <div class="source-name">Google / Internet</div>
+            <div class="source-track">
+              <div class="source-fill source-fill-absent"></div>
+              <span class="source-absent-tag">absent · tu n'existes pas en ligne</span>
+            </div>
+          </div>
+        </div>
+        <div class="source-risk">
+          <span class="source-risk-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          <span><strong>1 seule source = 1 seul point de rupture.</strong> Quand tes clients s'arrêtent de parler, il n'y a rien d'autre.</span>
+        </div>
+      </div>
+
+      <!-- Colonne droite : texte -->
+      <div class="saison-text rv-r reveal">
+        <div class="section-tag">Le problème caché</div>
+        <h2 class="section-title">Tout vient du bouche-à-oreille.<br>Sur Internet, tu es <em>invisible.</em></h2>
+        <p class="saison-sub">Le bouche-à-oreille c'est bien. Jusqu'au jour où tes clients s'arrêtent de parler. Google, lui, travaille à 3h du matin le 2 janvier quand quelqu'un tape <strong>"plombier urgence [ta ville]"</strong>. Tu apparais, ou tu n'existes pas. C'est ça, le vrai problème : <strong>un seul panier, et zéro filet.</strong></p>
+        <div class="saison-quote">
+          <em>"Je n'ai pas besoin de pub, mes clients me recommandent."</em><br>
+          <span class="saison-quote-rep">→ Jusqu'au jour où ils s'arrêtent. Et tu n'as aucun autre canal.</span>
+        </div>
+        <div class="mid-cta" style="justify-content:flex-start;margin-top:1.75rem;">
+          <button class="btn-primary" onclick="trackAndBook()">Analyser ma visibilité gratuitement →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     STATS BAR
+══════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item reveal d1">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="stat-num" data-count="25" data-prefix="+">+25</div>
+      <div class="stat-lbl">Artisans BTP accompagnés</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Spécialisées BTP uniquement</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="stat-num">30 min</div>
+      <div class="stat-lbl">Pour un diagnostic visibilité complet</div>
+    </div>
+    <div class="stat-item reveal d4">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5.5A8 8 0 1 0 17 18.5"/><line x1="3" y1="10" x2="14" y2="10"/><line x1="3" y1="14" x2="14" y2="14"/></svg>
+      </div>
+      <div class="stat-num" id="stat-countdown">Gratuit</div>
+      <div class="stat-lbl">Diagnostic visibilité offert</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CALCULATEUR
+══════════════════════════════════════ -->
+<section class="calc-section" id="calculateur">
+  <div class="wrap">
+
+    <div class="calc-header reveal">
+      <div class="section-tag" style="color:var(--orange);justify-content:center;">Le Révélateur</div>
+      <h2 class="section-title" style="color:#fff;">Combien d'argent <em>perds-tu</em> chaque mois parce que tes clients ne te trouvent pas ?</h2>
+      <p class="section-sub" style="margin:0 auto;">4 questions. Résultat immédiat et personnalisé.</p>
+      <div class="calc-steps-indicator">
+        <div class="csi-dot" id="dot-1"></div>
+        <div class="csi-dot" id="dot-2"></div>
+        <div class="csi-dot" id="dot-3"></div>
+        <div class="csi-dot" id="dot-4"></div>
+      </div>
+    </div>
+
+    <div class="calc-questions">
+      <div class="q-card q-enter" id="qcard-1">
+        <div class="q-head">
+          <span class="q-num">1</span>
+          <span class="q-text">Combien te rapporte un chantier en moyenne ?</span>
+        </div>
+        <div class="btn-group">
+          <button class="calc-btn" onclick="setPanier(500,this,'500 €')">500 €</button>
+          <button class="calc-btn" onclick="setPanier(1200,this,'1 200 €')">1 200 €</button>
+          <button class="calc-btn" onclick="setPanier(2500,this,'2 500 €')">2 500 €</button>
+          <button class="calc-btn" onclick="setPanier(5000,this,'5 000 €+')">5 000 €+</button>
+          <button class="calc-btn calc-btn-autre" onclick="showAutreInput(this)">Autre</button>
+          <div class="autre-input-wrap" id="autre-input-wrap" style="display:none;">
+            <input type="number" id="autre-value" class="autre-input" placeholder="Montant en €" min="1" max="99999"/>
+            <button class="autre-confirm" onclick="confirmAutre()">Confirmer →</button>
+          </div>
+        </div>
+        <div class="q-done-row"><span class="q-done-value" id="done-1"></span><span class="q-edit-hint">Modifier</span></div>
+      </div>
+      <div class="q-card q-hidden" id="qcard-2">
+        <div class="q-head">
+          <span class="q-num">2</span>
+          <span class="q-text">Combien de nouveaux chantiers signes-tu chaque mois ?</span>
+        </div>
+        <div class="btn-group">
+          <button class="calc-btn" onclick="setChantierActuel(1,this,'1-2 chantiers')">1-2 chantiers</button>
+          <button class="calc-btn" onclick="setChantierActuel(4,this,'3-5 chantiers')">3-5 chantiers</button>
+          <button class="calc-btn" onclick="setChantierActuel(8,this,'6-10 chantiers')">6-10 chantiers</button>
+          <button class="calc-btn" onclick="setChantierActuel(12,this,'10+ chantiers')">10+ chantiers</button>
+        </div>
+        <div class="q-done-row"><span class="q-done-value" id="done-2"></span><span class="q-edit-hint">Modifier</span></div>
+      </div>
+      <div class="q-card q-hidden" id="qcard-3">
+        <div class="q-head">
+          <span class="q-num">3</span>
+          <span class="q-text">En quelle position apparais-tu dans les résultats de recherche Google ?</span>
+        </div>
+        <div class="btn-group">
+          <button class="calc-btn" onclick="setPosition('top3',0.15,'Je suis bien placé, mais il y a encore de la marge pour capter plus de clients.',this,'Je suis dans le top 3')">Je suis dans le top 3</button>
+          <button class="calc-btn" onclick="setPosition('p4a10',0.55,'Je suis visible, mais la majorité des clients cliquent avant d\'arriver jusqu\'à moi.',this,'Je suis entre la position 4 et 10')">Je suis entre la position 4 et 10</button>
+          <button class="calc-btn" onclick="setPosition('p2',0.80,'Je suis en page 2 ou plus : moins de 5% des clients me trouvent.',this,'Je suis en page 2 ou plus')">Je suis en page 2 ou plus</button>
+          <button class="calc-btn" onclick="setPosition('inv',0.90,'Je ne sais pas où j\'apparais : c\'est souvent le signe qu\'on est peu visible.',this,'Je ne sais pas où j\'apparais')">Je ne sais pas où j'apparais</button>
+        </div>
+        <div class="q-done-row"><span class="q-done-value" id="done-3"></span><span class="q-edit-hint">Modifier</span></div>
+      </div>
+      <div class="q-card q-hidden" id="qcard-4">
+        <div class="q-head">
+          <span class="q-num">4</span>
+          <span class="q-text">Combien vises-tu de chantiers par mois ?</span>
+        </div>
+        <div class="btn-group">
+          <button class="calc-btn" onclick="setObjectif(2,this,'2 chantiers')">2 chantiers</button>
+          <button class="calc-btn" onclick="setObjectif(5,this,'5 chantiers')">5 chantiers</button>
+          <button class="calc-btn" onclick="setObjectif(10,this,'10 chantiers')">10 chantiers</button>
+          <button class="calc-btn" onclick="setObjectif(15,this,'15+ chantiers')">15+ chantiers</button>
+        </div>
+        <div class="q-done-row"><span class="q-done-value" id="done-4"></span><span class="q-edit-hint">Modifier</span></div>
+      </div>
+    </div>
+
+    <div class="calc-result" id="result-box">
+      <div class="calc-result-inner">
+        <div class="result-left">
+          <div class="result-label">Tu perds chaque mois</div>
+          <div class="result-amount" id="perte-mois">...</div>
+          <div class="result-sub">de chiffre d'affaires laissé à tes concurrents</div>
+        </div>
+        <div class="result-right">
+          <div class="result-badge" id="perte-annee"></div>
+          <div class="result-expl" id="explication"></div>
+          <div class="result-bridge" id="result-bridge" style="display:none;">
+            Ces <strong id="bridge-amount"></strong>/mois t'appartiennent déjà.<br>
+            <em>Tu les laisses juste filer vers tes concurrents.</em>
+          </div>
+          <button class="result-cta" id="result-cta-btn" onclick="trackAndBook()">
+            Réserver mon diagnostic visibilité →
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     DIAGNOSTIC,Ce qu'on analyse
+══════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="rv-l reveal">
+      <div class="section-tag">Le Diagnostic Visibilité</div>
+      <h2 class="section-title">30 minutes pendant lesquelles on passe en revue <em>tout ce qui bloque</em></h2>
+      <p class="section-sub" style="max-width:100%;">En 30 minutes avec un expert BTP, tu repars avec un plan d'action concret pour passer devant tes concurrents sur Google.</p>
+    </div>
+  </div><!-- /.wrap -->
+
+  <!-- ── Frise cônes de chantier ── -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <linearGradient id="coneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#F9A550"/>
+        <stop offset="45%"  stop-color="#EF7F15"/>
+        <stop offset="100%" stop-color="#B85C00"/>
+      </linearGradient>
+      <clipPath id="coneClip">
+        <path d="M24,2 L44,52 L4,52 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+  <div class="diag-timeline">
+    <div class="wrap">
+      <div class="diag-tl-track">
+        <div class="diag-tl-line"></div>
+        <div class="diag-tl-steps">
+
+          <div class="diag-tl-step">
+            <svg class="diag-tl-cone" viewBox="0 0 48 62" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Ombre portée -->
+              <ellipse cx="24" cy="60" rx="19" ry="4" fill="rgba(0,0,0,0.22)"/>
+              <!-- Socle -->
+              <rect x="0" y="51" width="48" height="11" rx="3" fill="#1a1a1a"/>
+              <rect x="2" y="52.5" width="44" height="2" rx="1" fill="rgba(255,255,255,0.07)"/>
+              <!-- Corps du cône avec dégradé -->
+              <path d="M24,3 L44,51 L4,51 Z" fill="url(#coneGrad)"/>
+              <!-- Bandes blanches réfléchissantes, clippées sur le contour du cône -->
+              <g clip-path="url(#coneClip)">
+                <rect x="0" y="38" width="48" height="12" fill="rgba(255,255,255,0.92)"/>
+                <rect x="0" y="21" width="48" height="9"  fill="rgba(255,255,255,0.92)"/>
+              </g>
+              <!-- Ombrage côté droit (profondeur 3D) -->
+              <path d="M24,3 L44,51 L36,51 Z" fill="rgba(0,0,0,0.13)"/>
+              <!-- Reflet côté gauche -->
+              <path d="M24,3 L4,51 L12,51 Z"  fill="rgba(255,255,255,0.08)"/>
+              <!-- Pointe lumineuse -->
+              <ellipse cx="24" cy="5.5" rx="3" ry="2" fill="rgba(255,215,80,0.55)"/>
+            </svg>
+            <div class="diag-tl-dot">1</div>
+            <div class="diag-tl-card">
+              <div class="diag-tl-tag">Fiche Google</div>
+              <div class="diag-tl-title">Audit de ta présence locale</div>
+              <div class="diag-tl-desc">On ouvre ta fiche Google Business et on vérifie point par point ce qui te pénalise aux yeux de Google.</div>
+            </div>
+          </div>
+
+          <div class="diag-tl-step">
+            <svg class="diag-tl-cone" viewBox="0 0 48 62" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Ombre portée -->
+              <ellipse cx="24" cy="60" rx="19" ry="4" fill="rgba(0,0,0,0.22)"/>
+              <!-- Socle -->
+              <rect x="0" y="51" width="48" height="11" rx="3" fill="#1a1a1a"/>
+              <rect x="2" y="52.5" width="44" height="2" rx="1" fill="rgba(255,255,255,0.07)"/>
+              <!-- Corps du cône avec dégradé -->
+              <path d="M24,3 L44,51 L4,51 Z" fill="url(#coneGrad)"/>
+              <!-- Bandes blanches réfléchissantes, clippées sur le contour du cône -->
+              <g clip-path="url(#coneClip)">
+                <rect x="0" y="38" width="48" height="12" fill="rgba(255,255,255,0.92)"/>
+                <rect x="0" y="21" width="48" height="9"  fill="rgba(255,255,255,0.92)"/>
+              </g>
+              <!-- Ombrage côté droit (profondeur 3D) -->
+              <path d="M24,3 L44,51 L36,51 Z" fill="rgba(0,0,0,0.13)"/>
+              <!-- Reflet côté gauche -->
+              <path d="M24,3 L4,51 L12,51 Z"  fill="rgba(255,255,255,0.08)"/>
+              <!-- Pointe lumineuse -->
+              <ellipse cx="24" cy="5.5" rx="3" ry="2" fill="rgba(255,215,80,0.55)"/>
+            </svg>
+            <div class="diag-tl-dot">2</div>
+            <div class="diag-tl-card">
+              <div class="diag-tl-tag">Site internet</div>
+              <div class="diag-tl-title">Analyse de ton site</div>
+              <div class="diag-tl-desc">On teste ton site en direct : est-ce qu'il convertit un visiteur en appel, ou est-ce qu'il le fait fuir ?</div>
+            </div>
+          </div>
+
+          <div class="diag-tl-step">
+            <svg class="diag-tl-cone" viewBox="0 0 48 62" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Ombre portée -->
+              <ellipse cx="24" cy="60" rx="19" ry="4" fill="rgba(0,0,0,0.22)"/>
+              <!-- Socle -->
+              <rect x="0" y="51" width="48" height="11" rx="3" fill="#1a1a1a"/>
+              <rect x="2" y="52.5" width="44" height="2" rx="1" fill="rgba(255,255,255,0.07)"/>
+              <!-- Corps du cône avec dégradé -->
+              <path d="M24,3 L44,51 L4,51 Z" fill="url(#coneGrad)"/>
+              <!-- Bandes blanches réfléchissantes, clippées sur le contour du cône -->
+              <g clip-path="url(#coneClip)">
+                <rect x="0" y="38" width="48" height="12" fill="rgba(255,255,255,0.92)"/>
+                <rect x="0" y="21" width="48" height="9"  fill="rgba(255,255,255,0.92)"/>
+              </g>
+              <!-- Ombrage côté droit (profondeur 3D) -->
+              <path d="M24,3 L44,51 L36,51 Z" fill="rgba(0,0,0,0.13)"/>
+              <!-- Reflet côté gauche -->
+              <path d="M24,3 L4,51 L12,51 Z"  fill="rgba(255,255,255,0.08)"/>
+              <!-- Pointe lumineuse -->
+              <ellipse cx="24" cy="5.5" rx="3" ry="2" fill="rgba(255,215,80,0.55)"/>
+            </svg>
+            <div class="diag-tl-dot">3</div>
+            <div class="diag-tl-card">
+              <div class="diag-tl-tag">Concurrents</div>
+              <div class="diag-tl-title">Scan de tes concurrents</div>
+              <div class="diag-tl-desc">On décortique ensemble qui apparaît avant toi dans ta ville, et pourquoi Google les préfère.</div>
+            </div>
+          </div>
+
+          <div class="diag-tl-step">
+            <svg class="diag-tl-cone" viewBox="0 0 48 62" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Ombre portée -->
+              <ellipse cx="24" cy="60" rx="19" ry="4" fill="rgba(0,0,0,0.22)"/>
+              <!-- Socle -->
+              <rect x="0" y="51" width="48" height="11" rx="3" fill="#1a1a1a"/>
+              <rect x="2" y="52.5" width="44" height="2" rx="1" fill="rgba(255,255,255,0.07)"/>
+              <!-- Corps du cône avec dégradé -->
+              <path d="M24,3 L44,51 L4,51 Z" fill="url(#coneGrad)"/>
+              <!-- Bandes blanches réfléchissantes, clippées sur le contour du cône -->
+              <g clip-path="url(#coneClip)">
+                <rect x="0" y="38" width="48" height="12" fill="rgba(255,255,255,0.92)"/>
+                <rect x="0" y="21" width="48" height="9"  fill="rgba(255,255,255,0.92)"/>
+              </g>
+              <!-- Ombrage côté droit (profondeur 3D) -->
+              <path d="M24,3 L44,51 L36,51 Z" fill="rgba(0,0,0,0.13)"/>
+              <!-- Reflet côté gauche -->
+              <path d="M24,3 L4,51 L12,51 Z"  fill="rgba(255,255,255,0.08)"/>
+              <!-- Pointe lumineuse -->
+              <ellipse cx="24" cy="5.5" rx="3" ry="2" fill="rgba(255,215,80,0.55)"/>
+            </svg>
+            <div class="diag-tl-dot">4</div>
+            <div class="diag-tl-card">
+              <div class="diag-tl-tag">Plan d'action</div>
+              <div class="diag-tl-title">Feuille de route personnalisée</div>
+              <div class="diag-tl-desc">Tu repars avec les 3 actions prioritaires pour que tes clients te trouvent avant tes concurrents.</div>
+            </div>
+          </div>
+
+        </div><!-- /.diag-tl-steps -->
+      </div><!-- /.diag-tl-track -->
+    </div><!-- /.wrap -->
+  </div><!-- /.diag-timeline -->
+  <div class="wrap">
+    <div class="mid-cta reveal">
+      <button class="btn-primary" onclick="trackAndBook()">Je veux ce diagnostic →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     OFFRE : CE QU'ON CONSTRUIT
+══════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="rv-l reveal">
+      <div class="section-tag">Ce qu'on construit ensemble</div>
+      <h2 class="section-title">Un site qui travaille pour toi <em>24h/24.</em><br>Même quand tu es sur le chantier.</h2>
+      <p class="section-sub" style="max-width:620px;">Pas une vitrine. Une machine à générer des appels. On livre un ensemble cohérent : site, fiche Google, SEO local, pensé pour ton corps de métier et ta zone.</p>
+    </div>
+
+    <div class="offre-grid">
+
+      <div class="offre-card offre-card-featured reveal d1">
+        <div class="offre-featured-label">Le plus rentable</div>
+        <div class="offre-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="offre-delay">Livré en 30 jours</div>
+        <div class="offre-title">Site web optimisé SEO local</div>
+        <div class="offre-desc">Conçu pour que le visiteur qui cherche ton métier dans ta ville devienne un appel. Chaque page cible une requête réelle de tes clients.</div>
+        <ul class="offre-list">
+          <li>Design professionnel adapté BTP</li>
+          <li>Pages "métier + ville" optimisées</li>
+          <li>Bouton d'appel direct prominent</li>
+          <li>100% adapté mobile</li>
+        </ul>
+      </div>
+
+      <div class="offre-card reveal d2">
+        <div class="offre-speed-label">Résultats visibles en 30 jours</div>
+        <div class="offre-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="offre-delay">Livré en 30 jours</div>
+        <div class="offre-title">Fiche Google Business optimisée</div>
+        <div class="offre-desc">70% des artisans sont choisis directement depuis Google Maps. On te positionne dans le "pack 3" local pour ta ville et ton métier.</div>
+        <ul class="offre-list">
+          <li>Audit et optimisation complète</li>
+          <li>Photos chantiers professionnelles</li>
+          <li>Stratégie avis clients</li>
+          <li>Publications régulières</li>
+        </ul>
+      </div>
+
+      <div class="offre-card reveal d3">
+        <div class="offre-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="offre-delay">Résultats durables dans le temps</div>
+        <div class="offre-title">Référencement local continu</div>
+        <div class="offre-desc">Le SEO n'est pas un coup de peinture. Chaque mois on travaille pour que tu montes et restes en haut de Google dans ta zone, devant tes concurrents.</div>
+        <ul class="offre-list">
+          <li>Rapport mensuel de positionnement</li>
+          <li>Optimisation des mots-clés locaux</li>
+          <li>Création de contenu ciblé</li>
+          <li>Veille et ajustements concurrentiels</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="process-strip reveal">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <div class="process-txt"><strong>Diagnostic · 30 min</strong>On identifie tes leviers réels</div>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <div class="process-txt"><strong>Plan d'action</strong>On te présente ce qu'on va faire</div>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <div class="process-txt"><strong>On démarre</strong>Site en ligne en 30 jours</div>
+      </div>
+    </div>
+
+    <div class="garantie-strip reveal">
+      <div class="garantie-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="garantie-body">
+        <div class="garantie-title">Notre engagement : on continue jusqu'à ce que ça marche.</div>
+        <div class="garantie-desc">On ne livre pas un site et on disparaît. On suit ton positionnement chaque mois, on ajuste, on optimise. <strong>On s'arrête quand tes chantiers rentrent, pas avant.</strong> C'est comme ça qu'on travaille avec chacun de nos artisans.</div>
+      </div>
+    </div>
+
+    <div class="mid-cta reveal">
+      <button class="btn-primary" onclick="trackAndBook()">Démarrer · C'est gratuit →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SOCIAL PROOF
+══════════════════════════════════════ -->
+<section class="section section-no-grid">
+  <div class="wrap">
+    <div class="rv-l reveal">
+      <div class="section-tag">Avis Google</div>
+      <h2 class="section-title">Des artisans BTP qui voient <em>des résultats concrets</em></h2>
+    </div>
+    <div class="proof-grid">
+      <div class="carousel-wrap rv-l reveal d1" id="carousel">
+
+        <div class="carousel-track" id="carousel-track">
+
+          <!-- Avis 1 -->
+          <div class="carousel-slide active">
+            <div class="temo-service">Site web + SEO + Fiche Google + Shooting</div>
+            <div class="temo-stars">★★★★★</div>
+            <div class="temo-date">Avis Google · Novembre 2025</div>
+            <div class="temo-text">"Nous avons fait appel à l'Agence de l'Ombre pour moderniser complètement notre présence en ligne, et nous sommes très satisfaits du résultat. Notre ancien site internet datait et avait besoin d'un vrai travail de refonte. L'équipe a su créer un site moderne, clair et parfaitement adapté à notre activité dans le BTP. Ils se sont également occupés du référencement, de l'optimisation de notre fiche Google, ainsi que d'un shooting photo professionnel sur nos chantiers. Le rendu est très qualitatif et reflète parfaitement le sérieux de notre entreprise. Une équipe sérieuse, réactive et compétente que nous recommandons sans hésiter !"</div>
+            <div class="temo-footer">
+              <div class="temo-avatar">G</div>
+              <div>
+                <div class="temo-name">Goncalves Frères Etanchéité</div>
+                <div class="temo-role">Étanchéité · BTP</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 2 -->
+          <div class="carousel-slide">
+            <div class="temo-service">Site web + Référencement + Réseaux sociaux</div>
+            <div class="temo-stars">★★★★★</div>
+            <div class="temo-date">Avis Google · Décembre 2025</div>
+            <div class="temo-text">"Très très bonne expérience. Équipe réactive, efficace et vraiment pro. Site internet, référencement et réseaux bien gérés, on voit de suite la différence ! Je recommande vivement aux artisans qui veulent plus de visibilité."</div>
+            <div class="temo-footer">
+              <div class="temo-avatar">M</div>
+              <div>
+                <div class="temo-name">Morgane S.</div>
+                <div class="temo-role">Avis vérifié Google</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 3 -->
+          <div class="carousel-slide">
+            <div class="temo-service">Site web · Livré en quelques semaines</div>
+            <div class="temo-stars">★★★★★</div>
+            <div class="temo-date">Avis Google · Mars 2026</div>
+            <div class="temo-text">"Super expérience avec l'Agence de l'Ombre ! L'équipe m'a fourni un site web pro qui répondait à mes attentes et reflétait mon travail en quelques semaines. Équipe experte et support nickel. Je vous les recommande vivement ! Merci à vous pour votre travail."</div>
+            <div class="temo-footer">
+              <div class="temo-avatar">F</div>
+              <div>
+                <div class="temo-name">Full Park</div>
+                <div class="temo-role">Avis vérifié Google</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 4 -->
+          <div class="carousel-slide">
+            <div class="temo-service">Accompagnement complet</div>
+            <div class="temo-stars">★★★★★</div>
+            <div class="temo-date">Avis Google</div>
+            <div class="temo-text">"Très content du professionnalisme de l'équipe, jeune et dynamique. Je vous les recommande."</div>
+            <div class="temo-footer">
+              <div class="temo-avatar">M</div>
+              <div>
+                <div class="temo-name">Moses</div>
+                <div class="temo-role">Avis vérifié Google</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-controls">
+          <div class="carousel-dots" id="carousel-dots">
+            <button class="c-dot active" onclick="goTo(0)"></button>
+            <button class="c-dot" onclick="goTo(1)"></button>
+            <button class="c-dot" onclick="goTo(2)"></button>
+            <button class="c-dot" onclick="goTo(3)"></button>
+          </div>
+          <div class="carousel-nav">
+            <button class="c-btn" onclick="prev()" aria-label="Précédent">&#8592;</button>
+            <button class="c-btn" onclick="next()" aria-label="Suivant">&#8594;</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="agence-card rv-r reveal d2">
+        <div class="agence-brand">
+          <div class="agence-brand-icon">
+            <svg height="44" viewBox="0 0 346 245" xmlns="http://www.w3.org/2000/svg" style="width:auto;display:block;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+              <g transform="matrix(1,0,0,1,-1154.8,-2551.12)">
+                <g transform="matrix(3.67871,0,0,3.66051,-8358.66,-347.046)"><path d="M2649.63,796.531C2666.39,796.531 2679.99,810.139 2679.99,826.896C2679.99,843.653 2666.39,857.261 2649.63,857.261C2632.87,857.261 2619.27,843.653 2619.27,826.896C2619.27,810.139 2632.87,796.531 2649.63,796.531ZM2649.63,799.232C2634.36,799.232 2621.96,811.626 2621.96,826.896C2621.96,842.167 2634.36,854.561 2649.63,854.561C2664.9,854.561 2677.3,842.167 2677.3,826.896C2677.3,811.626 2664.9,799.232 2649.63,799.232Z" style="fill:rgb(239,127,21);"/></g>
+                <g transform="matrix(3.99059,0,0,4.0488,-9298.48,-674.59)"><path d="M2667.29,851.358C2662.33,854.96 2656.22,857.086 2649.63,857.086C2632.98,857.086 2619.49,843.545 2619.49,826.896C2619.49,810.248 2632.98,796.707 2649.63,796.707C2657.28,796.707 2664.27,799.568 2669.58,804.276C2669.88,804.536 2669.64,803.878 2669.58,804.276C2669.53,804.673 2668.1,804.542 2666.77,804.943C2658.04,807.571 2650.67,818.577 2650.67,828.351C2650.67,837.264 2659.55,848.159 2667.29,851.358C2667.65,851.507 2667.76,849.945 2667.77,850.346C2667.79,850.747 2667.61,851.128 2667.29,851.358ZM2664.55,850.412C2657.66,845.558 2650.67,837.466 2650.67,828.351C2650.67,818.292 2658.64,809.54 2666.77,804.943C2662.04,801.253 2656.09,799.056 2649.63,799.056C2634.25,799.056 2621.74,811.518 2621.74,826.896C2621.74,842.275 2634.25,854.737 2649.63,854.737C2655.12,854.737 2660.24,853.151 2664.55,850.412Z" style="fill:rgb(25,25,25);"/></g>
+                <g transform="matrix(0.797708,0,0,1,-821.671,547.548)"><path d="M2890.06,2075.96C2894.95,2084.25 2898.79,2093.22 2901.4,2102.7L2901.4,2161.56C2898.79,2171.04 2894.95,2180.01 2890.06,2188.3L2890.06,2075.96Z" style="fill:rgb(239,127,21);"/></g>
+                <g transform="matrix(0.68357,0,0,1,-502.577,546.811)"><path d="M2858.68,2041.76C2865.26,2046.45 2871.3,2051.83 2876.7,2057.8L2876.7,2206.46C2871.3,2212.43 2865.26,2217.81 2858.68,2222.5L2858.68,2041.76Z" style="fill:rgb(239,127,21);"/></g>
+                <g transform="matrix(1,0,0,1,-1405.13,547.69)"><path d="M2802.38,2242.95C2799.51,2243.17 2796.61,2243.28 2793.69,2243.28C2732.04,2243.28 2682.01,2193.47 2682.01,2132.13C2682.01,2070.79 2732.04,2020.98 2793.69,2020.98C2796.61,2020.98 2799.51,2021.09 2802.38,2021.31L2802.38,2242.95ZM2749.91,2040.69C2715.61,2056.99 2691.89,2091.82 2691.89,2132.13C2691.89,2168.72 2711.44,2200.81 2740.71,2218.6C2769.8,2197.33 2788.64,2164.12 2788.89,2126.72C2789.12,2092.88 2774.1,2062.26 2749.91,2040.69Z" style="fill:rgb(239,127,21);"/></g>
+                <g transform="matrix(0.71114,0,0,0.985832,-589.871,578.646)"><path d="M2822.1,2024.61C2829.13,2026.45 2835.9,2028.96 2842.32,2032.06L2842.32,2232.2C2835.9,2235.3 2829.13,2237.81 2822.1,2239.65L2822.1,2024.61Z" style="fill:rgb(239,127,21);"/></g>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="agence-brand-name">Agence de l'Ombre</div>
+            <div class="agence-brand-tag">Spécialisée BTP · France entière</div>
+          </div>
+        </div>
+        <div class="agence-desc">On ne fait que le BTP. Fiche Google, site, SEO, publicités, réseaux, shooting chantiers. On connaît ton marché, tes concurrents, et ce que cherchent tes clients.</div>
+        <div class="agence-stats-row">
+          <div class="agence-stat">
+            <div class="agence-stat-num">+25</div>
+            <div class="agence-stat-lbl">Artisans BTP accompagnés</div>
+          </div>
+          <div class="agence-stat">
+            <div class="agence-stat-num">100%</div>
+            <div class="agence-stat-lbl">Spécialisés BTP</div>
+          </div>
+          <div class="agence-stat">
+            <div class="agence-stat-num">30 min</div>
+            <div class="agence-stat-lbl">Diagnostic visibilité complet</div>
+          </div>
+        </div>
+        <div class="urgency-strip">
+          <div class="urgency-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div class="urgency-text">Les créneaux sont <strong>limités chaque semaine</strong>, il reste
+            <a href="https://api.leadconnectorhq.com/widget/bookings/diagnostic-artisanszzpxy8wpazah" target="_blank" class="slot-counter slot-counter-link">
+              <strong id="placesCount" class="places-num">9</strong>
+              <span class="slot-label">places disponibles</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ÉQUIPE
+══════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="rv-l reveal">
+      <div class="section-tag">L'équipe derrière les résultats</div>
+      <h2 class="section-title">Des vraies personnes.<br><em>Pas une agence fantôme.</em></h2>
+      <p class="section-sub" style="max-width:560px;">Voici une partie de l'équipe qui travaille pour toi. 100% spécialisée BTP, chacune a un rôle précis pour que ton chantier soit visible avant tes concurrents.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Johanna -->
+      <div class="team-card reveal d1">
+        <div class="team-photo-wrap">
+          <img src="../team/johanna.jpg" alt="Johanna G." class="team-photo">
+          <div class="team-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Johanna G.</div>
+          <div class="team-role">Fondatrice &amp; Stratège · 9 ans d'expérience BTP</div>
+          <div class="team-desc">Après 9 ans dans une PME du bâtiment, Johanna connaît intimement vos défis quotidiens. Elle transforme cette expertise terrain en stratégies digitales qui génèrent des chantiers concrets.</div>
+          <div class="team-tags">
+            <span class="team-tag">Stratégie BTP</span>
+            <span class="team-tag">Croissance</span>
+            <span class="team-tag">Terrain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marjorie -->
+      <div class="team-card reveal d2">
+        <div class="team-photo-wrap">
+          <img src="../team/marjorie.jpg" alt="Marjorie C." class="team-photo">
+          <div class="team-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Marjorie C.</div>
+          <div class="team-role">Responsable Communication &amp; Image</div>
+          <div class="team-desc">Marjorie met en valeur votre potentiel et rend votre entreprise claire, visible et crédible. Son rôle : faire en sorte que vos clients comprennent immédiatement ce que vous faites… et que le téléphone sonne pour vous, pas pour vos concurrents.</div>
+          <div class="team-tags">
+            <span class="team-tag">Communication</span>
+            <span class="team-tag">Image de marque</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cindy -->
+      <div class="team-card reveal d3">
+        <div class="team-photo-wrap">
+          <img src="../team/cindy.jpg" alt="Cindy G." class="team-photo">
+          <div class="team-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Cindy G.</div>
+          <div class="team-role">Spécialiste Référencement Local</div>
+          <div class="team-desc">Cindy positionne les entreprises du BTP en tête des résultats Google dans leur zone géographique. Son objectif : transformer votre visibilité en demandes de devis qualifiées et concrètes, sans dépendre du bouche-à-oreille.</div>
+          <div class="team-tags">
+            <span class="team-tag">SEO Local</span>
+            <span class="team-tag">Google</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kathleen -->
+      <div class="team-card reveal d4">
+        <div class="team-photo-wrap">
+          <img src="../team/kathleen.jpg" alt="Kathleen W." class="team-photo">
+          <div class="team-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Kathleen W.</div>
+          <div class="team-role">Experte Publicité</div>
+          <div class="team-desc">Génère vos demandes de devis. Experte campagnes Meta et Google Ads.</div>
+          <div class="team-tags">
+            <span class="team-tag">Meta Ads</span>
+            <span class="team-tag">Google Ads</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="mid-cta reveal">
+      <button class="btn-primary" onclick="trackAndBook()">Prendre rendez-vous avec l'équipe →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="rv-l reveal">
+      <div class="section-tag">Questions fréquentes</div>
+      <h2 class="section-title">Ce que tu te demandes <em>en ce moment</em></h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal d1">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          "J'ai pas le temps de m'occuper de tout ça, je suis sur les chantiers."
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a"><strong>C'est exactement pour ça qu'on est là.</strong> Le diagnostic dure 30 minutes. Après, c'est nous qui faisons le travail : référencement, fiche Google, publicités. Toi tu restes sur le chantier.</div>
+      </div>
+
+      <div class="faq-item reveal d2">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          "J'ai déjà un site internet, ça devrait aller."
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a"><strong>Avoir un site et être trouvé, c'est pas la même chose.</strong> 90% des artisans qu'on accompagne avaient déjà un site. Le problème n'était pas le site : personne ne le voyait. Un site sans visibilité, c'est une vitrine dans une rue vide.</div>
+      </div>
+
+      <div class="faq-item reveal d3">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          "Je sais pas si ça va vraiment marcher pour moi."
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a"><strong>C'est pour ça que le diagnostic existe.</strong> En 30 minutes, on regarde ta situation réelle : ta zone, tes concurrents, ce que cherchent tes clients. Si on voit qu'il n'y a pas de levier, on te le dit. Sans engagement.</div>
+      </div>
+
+      <div class="faq-item reveal d4">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          "C'est trop cher pour moi en ce moment."
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a"><strong>Reviens au calculateur.</strong> Si tu perds 2 chantiers par mois parce que tes clients ne te trouvent pas, combien ça te coûte sur l'année ? Le diagnostic n'est pas une dépense, c'est le début d'une réponse.</div>
+      </div>
+
+      <div class="faq-item reveal d5">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Vous travaillez dans toute la France ?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">Oui, on est 100% à distance. On accompagne des artisans BTP partout en France, de Paris à Marseille en passant par Lyon, Bordeaux, Nantes ou Toulouse. La zone géographique ne change rien à notre méthode : on connaît les recherches locales de tes clients et on cible ta ville précisément.</div>
+      </div>
+
+      <div class="faq-item reveal d6">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Combien de temps avant de voir des résultats sur Google ?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a"><strong>Fiche Google Business :</strong> les premières améliorations se voient en 30 à 60 jours. <strong>SEO local :</strong> un positionnement solide se construit sur 3 à 6 mois. C'est pour ça qu'on reste avec toi dans la durée.</div>
+      </div>
+
+      <div class="faq-item reveal d6">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quelle différence avec une agence web classique ?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">Une agence généraliste te fait un joli site. Nous, on fait un site qui <strong>génère des appels</strong> pour un plombier, un électricien ou un carreleur. On connaît les mots que tapent tes clients, les concurrents qui dominent ta zone, et les arguments qui font décrocher le téléphone dans le BTP. C'est notre seul métier.</div>
+      </div>
+
+      <div class="faq-item reveal d6">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Et si je n'ai pas encore de site internet ?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">On construit tout depuis zéro : logo, site, fiche Google, référencement. Aucun prérequis. Il suffit de vouloir que tes clients te trouvent.</div>
+      </div>
+
+      <div class="faq-item reveal d6">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Est-ce que je suis engagé sur une longue durée ?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">On t'explique tout lors du diagnostic. Ce qu'on peut dire dès maintenant : on ne croit pas aux contrats qui retiennent des clients qui ne sont pas satisfaits. Notre intérêt, c'est que tu aies des résultats. Pas de te facturer pour rien.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="cta-section" id="cta">
+
+  <!-- Fond décoratif -->
+  <div class="cta-bg-art" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grands cercles concentriques droite -->
+      <circle cx="1100" cy="200" r="320" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <circle cx="1100" cy="200" r="240" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      <circle cx="1100" cy="200" r="160" fill="none" stroke="rgba(255,255,255,0.13)" stroke-width="1.5"/>
+      <circle cx="1100" cy="200" r="80"  fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      <!-- Arc partiel gauche -->
+      <path d="M -60 320 A 420 420 0 0 1 260 -60" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+      <path d="M -30 340 A 360 360 0 0 1 240 -30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      <!-- Lignes diagonales légères -->
+      <line x1="0"   y1="400" x2="300" y2="0"   stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="120" y1="400" x2="420" y2="0"   stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="240" y1="400" x2="540" y2="0"   stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <!-- Petit cercle accent -->
+      <circle cx="1100" cy="200" r="30" fill="rgba(255,255,255,0.05)"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="cta-left rv-l reveal">
+        <div class="cta-urgence">En ce moment, des clients cherchent ton métier dans ta ville.</div>
+        <h2>Tu veux savoir pourquoi ils n'appellent pas chez toi ?</h2>
+        <p>Le Diagnostic Visibilité identifie exactement ce qui bloque, et ce qu'il faut changer pour que tes clients te trouvent avant tes concurrents. Sans engagement, 100% personnalisé pour ton activité BTP.</p>
+      </div>
+      <div class="cta-right rv-r reveal">
+        <div class="cta-process">
+          <div class="cta-process-step">
+            <div class="cta-process-num">1</div>
+            <span>Tu réserves un créneau de <strong>30 minutes</strong></span>
+          </div>
+          <div class="cta-process-step">
+            <div class="cta-process-num">2</div>
+            <span>On analyse ta fiche Google, ton site et tes concurrents <strong>en direct avec toi</strong></span>
+          </div>
+          <div class="cta-process-step">
+            <div class="cta-process-num">3</div>
+            <span>Tu repars avec un plan d'action clair, <strong>qu'on travaille ensemble ou pas</strong></span>
+          </div>
+        </div>
+        <button class="cta-main-btn" onclick="trackAndBook()">
+          Réserver mon Diagnostic Visibilité →
+        </button>
+        <div class="cta-checks">
+          <span class="cta-check">Sans engagement</span>
+          <span class="cta-check">30 minutes</span>
+          <span class="cta-check">1 artisan par zone géographique</span>
+          <span class="cta-check">Places limitées</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <svg height="52" viewBox="0 0 346 245" xmlns="http://www.w3.org/2000/svg" style="width:auto;display:block;margin-bottom:.75rem;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+          <g transform="matrix(1,0,0,1,-1154.8,-2551.12)">
+            <g transform="matrix(3.67871,0,0,3.66051,-8358.66,-347.046)"><path d="M2649.63,796.531C2666.39,796.531 2679.99,810.139 2679.99,826.896C2679.99,843.653 2666.39,857.261 2649.63,857.261C2632.87,857.261 2619.27,843.653 2619.27,826.896C2619.27,810.139 2632.87,796.531 2649.63,796.531ZM2649.63,799.232C2634.36,799.232 2621.96,811.626 2621.96,826.896C2621.96,842.167 2634.36,854.561 2649.63,854.561C2664.9,854.561 2677.3,842.167 2677.3,826.896C2677.3,811.626 2664.9,799.232 2649.63,799.232Z" style="fill:rgb(239,127,21);"/></g>
+            <g transform="matrix(3.99059,0,0,4.0488,-9298.48,-674.59)"><path d="M2667.29,851.358C2662.33,854.96 2656.22,857.086 2649.63,857.086C2632.98,857.086 2619.49,843.545 2619.49,826.896C2619.49,810.248 2632.98,796.707 2649.63,796.707C2657.28,796.707 2664.27,799.568 2669.58,804.276C2669.88,804.536 2669.64,803.878 2669.58,804.276C2669.53,804.673 2668.1,804.542 2666.77,804.943C2658.04,807.571 2650.67,818.577 2650.67,828.351C2650.67,837.264 2659.55,848.159 2667.29,851.358C2667.65,851.507 2667.76,849.945 2667.77,850.346C2667.79,850.747 2667.61,851.128 2667.29,851.358ZM2664.55,850.412C2657.66,845.558 2650.67,837.466 2650.67,828.351C2650.67,818.292 2658.64,809.54 2666.77,804.943C2662.04,801.253 2656.09,799.056 2649.63,799.056C2634.25,799.056 2621.74,811.518 2621.74,826.896C2621.74,842.275 2634.25,854.737 2649.63,854.737C2655.12,854.737 2660.24,853.151 2664.55,850.412Z" style="fill:rgb(255,255,255);"/></g>
+            <g transform="matrix(0.797708,0,0,1,-821.671,547.548)"><path d="M2890.06,2075.96C2894.95,2084.25 2898.79,2093.22 2901.4,2102.7L2901.4,2161.56C2898.79,2171.04 2894.95,2180.01 2890.06,2188.3L2890.06,2075.96Z" style="fill:rgb(239,127,21);"/></g>
+            <g transform="matrix(0.68357,0,0,1,-502.577,546.811)"><path d="M2858.68,2041.76C2865.26,2046.45 2871.3,2051.83 2876.7,2057.8L2876.7,2206.46C2871.3,2212.43 2865.26,2217.81 2858.68,2222.5L2858.68,2041.76Z" style="fill:rgb(239,127,21);"/></g>
+            <g transform="matrix(1,0,0,1,-1405.13,547.69)"><path d="M2802.38,2242.95C2799.51,2243.17 2796.61,2243.28 2793.69,2243.28C2732.04,2243.28 2682.01,2193.47 2682.01,2132.13C2682.01,2070.79 2732.04,2020.98 2793.69,2020.98C2796.61,2020.98 2799.51,2021.09 2802.38,2021.31L2802.38,2242.95ZM2749.91,2040.69C2715.61,2056.99 2691.89,2091.82 2691.89,2132.13C2691.89,2168.72 2711.44,2200.81 2740.71,2218.6C2769.8,2197.33 2788.64,2164.12 2788.89,2126.72C2789.12,2092.88 2774.1,2062.26 2749.91,2040.69Z" style="fill:rgb(239,127,21);"/></g>
+            <g transform="matrix(0.71114,0,0,0.985832,-589.871,578.646)"><path d="M2822.1,2024.61C2829.13,2026.45 2835.9,2028.96 2842.32,2032.06L2842.32,2232.2C2835.9,2235.3 2829.13,2237.81 2822.1,2239.65L2822.1,2024.61Z" style="fill:rgb(239,127,21);"/></g>
+          </g>
+        </svg>
+        <div class="footer-brand-name">Agence de l'Ombre</div>
+        <div class="footer-brand-tag">Spécialisée BTP · France entière</div>
+        <div class="footer-brand-desc">On structure la visibilité locale des artisans BTP : site web, réseaux sociaux, publicités et branding.</div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/agence.de.lombre/" target="_blank" class="footer-social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100092256871177" target="_blank" class="footer-social-link" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/agence-de-lombre/" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <span class="footer-link">hello@agencedelombre.fr</span>
+      </div>
+      <div>
+        <div class="footer-col-title">Nos services</div>
+        <span class="footer-link">Fiche Google</span>
+        <span class="footer-link">Site Web</span>
+        <span class="footer-link">Référencement</span>
+        <span class="footer-link">Publicités Méta Ads</span>
+        <span class="footer-link">Réseaux Sociaux</span>
+        <span class="footer-link">Shooting Chantiers</span>
+        <span class="footer-link">Identité visuelle</span>
+        <span class="footer-link">Branding</span>
+      </div>
+      <div>
+        <div class="footer-col-title">Zones d'intervention</div>
+        <span class="footer-link">Chambéry &amp; Savoie</span>
+        <span class="footer-link">Grenoble &amp; Isère</span>
+        <span class="footer-link">Lyon &amp; Rhône-Alpes</span>
+        <span class="footer-link">Lille &amp; Hauts-de-France</span>
+        <span class="footer-link">Nantes &amp; Pays de la Loire</span>
+        <span class="footer-link">Orléans &amp; Centre-Val de Loire</span>
+        <span class="footer-link">Marseille &amp; PACA</span>
+        <span class="footer-link">Bordeaux &amp; Nouvelle-Aquitaine</span>
+        <span class="footer-link">Bruxelles &amp; Belgique</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Agence de l'Ombre · Tous droits réservés · Ce site ne fait pas partie du site web Facebook ou de Facebook, Inc. En outre, ce site n'est pas endossé par Facebook en aucune façon. Facebook est une marque déposée de Facebook, Inc.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script>
+/* ── Meta Pixel : helper conversion ────────── */
+const BOOKING_URL = 'https://api.leadconnectorhq.com/widget/bookings/diagnostic-artisanszzpxy8wpazah';
+function trackAndBook() {
+  if (typeof fbq === 'function') fbq('track', 'Lead');
+  window.open(BOOKING_URL, '_blank');
+}
+
+/* ── Calculateur ─────────────────────────── */
+let panier = null, chantierActuel = null, posRate = null, posKey = null, posLabel = null, objectif = null;
+
+function clearGroup(btns) { btns.forEach(b => b.classList.remove('active')); }
+
+function updateDots() {
+  ['dot-1','dot-2','dot-3','dot-4'].forEach(id => {
+    document.getElementById(id).classList.remove('active','done');
+  });
+  if (panier)                document.getElementById('dot-1').classList.add('done');
+  else                       document.getElementById('dot-1').classList.add('active');
+  if (chantierActuel !== null) document.getElementById('dot-2').classList.add('done');
+  else if (panier)           document.getElementById('dot-2').classList.add('active');
+  if (posRate !== null)      document.getElementById('dot-3').classList.add('done');
+  else if (chantierActuel !== null) document.getElementById('dot-3').classList.add('active');
+  if (objectif)              document.getElementById('dot-4').classList.add('done');
+  else if (posRate !== null) document.getElementById('dot-4').classList.add('active');
+}
+
+function revealNext(cardId, doneId, label) {
+  const card = document.getElementById(cardId);
+  card.classList.remove('q-enter');
+  card.classList.add('q-done');
+  document.getElementById(doneId).textContent = label;
+  if      (cardId === 'qcard-1') showCard('qcard-2');
+  else if (cardId === 'qcard-2') showCard('qcard-3');
+  else if (cardId === 'qcard-3') showCard('qcard-4');
+  else if (cardId === 'qcard-4') calculate();
+}
+
+function showCard(id) {
+  const card = document.getElementById(id);
+  card.classList.remove('q-hidden');
+  card.classList.add('q-enter');
+  setTimeout(() => card.scrollIntoView({ behavior:'smooth', block:'nearest' }), 80);
+}
+
+function showAutreInput(btn) {
+  clearGroup(btn.parentElement.querySelectorAll('.calc-btn'));
+  btn.classList.add('active');
+  const wrap = document.getElementById('autre-input-wrap');
+  wrap.style.display = 'flex';
+  setTimeout(() => document.getElementById('autre-value').focus(), 80);
+}
+
+function confirmAutre() {
+  const val = parseInt(document.getElementById('autre-value').value);
+  if (!val || val < 1) return;
+  panier = val;
+  const label = val.toLocaleString('fr-FR') + ' €';
+  document.getElementById('autre-input-wrap').style.display = 'none';
+  updateDots();
+  setTimeout(() => revealNext('qcard-1','done-1', label), 260);
+}
+
+// Retour en arrière
+function reopenQuestion(step) {
+  const reset = (id) => {
+    const c = document.getElementById(id);
+    c.classList.add('q-hidden'); c.classList.remove('q-done','q-enter');
+    clearGroup(c.querySelectorAll('.calc-btn'));
+  };
+  if (step === 1) {
+    const c1 = document.getElementById('qcard-1');
+    c1.classList.remove('q-done'); c1.classList.add('q-enter');
+    reset('qcard-2'); reset('qcard-3'); reset('qcard-4');
+    document.getElementById('autre-input-wrap').style.display = 'none';
+    panier = null; chantierActuel = null; posRate = null; posKey = null; posLabel = null; objectif = null;
+    document.getElementById('result-box').style.display = 'none';
+    clearGroup(c1.querySelectorAll('.calc-btn'));
+    c1.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  } else if (step === 2) {
+    const c2 = document.getElementById('qcard-2');
+    c2.classList.remove('q-done','q-hidden'); c2.classList.add('q-enter');
+    reset('qcard-3'); reset('qcard-4');
+    chantierActuel = null; posRate = null; posKey = null; posLabel = null; objectif = null;
+    document.getElementById('result-box').style.display = 'none';
+    clearGroup(c2.querySelectorAll('.calc-btn'));
+    c2.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  } else if (step === 3) {
+    const c3 = document.getElementById('qcard-3');
+    c3.classList.remove('q-done','q-hidden'); c3.classList.add('q-enter');
+    reset('qcard-4');
+    posRate = null; posKey = null; posLabel = null; objectif = null;
+    document.getElementById('result-box').style.display = 'none';
+    clearGroup(c3.querySelectorAll('.calc-btn'));
+    c3.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  } else if (step === 4) {
+    const c4 = document.getElementById('qcard-4');
+    c4.classList.remove('q-done','q-hidden'); c4.classList.add('q-enter');
+    objectif = null;
+    document.getElementById('result-box').style.display = 'none';
+    clearGroup(c4.querySelectorAll('.calc-btn'));
+    c4.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+  updateDots();
+}
+
+['qcard-1','qcard-2','qcard-3','qcard-4'].forEach((id, i) => {
+  document.getElementById(id).addEventListener('click', function() {
+    if (this.classList.contains('q-done')) reopenQuestion(i + 1);
+  });
+});
+
+function setPanier(v, btn, label) {
+  panier = v;
+  document.getElementById('autre-input-wrap').style.display = 'none';
+  clearGroup(btn.parentElement.querySelectorAll('.calc-btn'));
+  btn.classList.add('active');
+  updateDots();
+  setTimeout(() => revealNext('qcard-1','done-1', label), 260);
+}
+function setChantierActuel(v, btn, label) {
+  chantierActuel = v;
+  clearGroup(btn.parentElement.querySelectorAll('.calc-btn'));
+  btn.classList.add('active');
+  updateDots();
+  setTimeout(() => revealNext('qcard-2','done-2', label), 260);
+}
+function setPosition(key, rate, label, btn, shortLabel) {
+  posRate = rate; posKey = key; posLabel = label;
+  clearGroup(btn.parentElement.querySelectorAll('.calc-btn'));
+  btn.classList.add('active');
+  updateDots();
+  setTimeout(() => revealNext('qcard-3','done-3', shortLabel), 260);
+}
+function setObjectif(v, btn, label) {
+  objectif = v;
+  clearGroup(btn.parentElement.querySelectorAll('.calc-btn'));
+  btn.classList.add('active');
+  updateDots();
+  setTimeout(() => revealNext('qcard-4','done-4', label), 260);
+}
+
+function animateCount(el, target) {
+  const dur = 900, start = performance.now(), from = 0;
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 4);
+    el.textContent = Math.round(from + (target - from) * ease).toLocaleString('fr-FR') + ' €';
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function getExplication(pk, pan, obj) {
+  const pLbl = pan >= 5000 ? '5 000 €+' : pan >= 2500 ? '2 500 €' : pan >= 1200 ? '1 200 €' : '500 €';
+  const gros = pan >= 2500;
+  const ambi = obj >= 10;
+
+  if (pk === 'top3') {
+    if (gros && ambi)
+      return 'Tu es dans les 3 premiers résultats quand quelqu\'un tape ton métier sur Google : c\'est une bonne position. Mais avec des chantiers à ' + pLbl + ' et un objectif de ' + obj + ' par mois, si ta fiche n\'est pas parfaitement soignée (photos, avis, description), certains clients hésitent et appellent un concurrent. Chaque hésitation te coûte cher.';
+    if (gros)
+      return 'Tu es dans les 3 premiers résultats sur Google : les clients te voient. Mais avec des chantiers à ' + pLbl + ', si ta fiche est moins convaincante qu\'un concurrent (moins d\'avis, moins de photos), ils vont l\'appeler LUI plutôt que TOI. Et tu ne le sais même pas.';
+    if (ambi)
+      return 'Tu es bien positionné sur Google, les gens te trouvent. Mais pour atteindre ' + obj + ' chantiers par mois, il faut que ta fiche soit irréprochable pour que chaque visite se transforme en appel. Il reste de la marge.';
+    return 'Tu es dans le top 3 sur Google, ce qui veut dire que les clients te voient quand ils cherchent. C\'est bien. Mais si ta fiche manque d\'avis ou de photos, ils peuvent quand même choisir un concurrent qui inspire plus confiance.';
+  }
+
+  if (pk === 'p4a10') {
+    if (gros && ambi)
+      return 'Tu apparais sur Google, mais pas dans les 3 premiers. Concrètement : 85% des gens qui cherchent ton métier dans ta ville cliquent sur les 3 premiers résultats et ne descendent jamais jusqu\'à toi. Avec des chantiers à ' + pLbl + ' et ' + obj + ' chantiers visés par mois, ça représente beaucoup de clients perdus chaque semaine.';
+    if (gros)
+      return 'Tu apparais sur Google entre la 4ème et la 10ème place. Le problème : la plupart des gens cliquent sur les 3 premiers résultats et s\'arrêtent là. Avec des chantiers à ' + pLbl + ', chaque client qui ne te trouve pas, c\'est une perte concrète.';
+    if (ambi)
+      return 'Tu vises ' + obj + ' chantiers par mois, mais si tu n\'apparais pas dans les 3 premiers résultats sur Google, la grande majorité des clients ne te voient jamais. Ils appellent les premiers de la liste, pas toi, même si tu fais un meilleur travail.';
+    return 'Tu es visible sur Google, mais pas assez haut. La réalité : quand quelqu\'un cherche un artisan dans ta ville, il appelle les 3 premiers résultats. S\'il faut scroller pour te trouver, la plupart ne le font pas.';
+  }
+
+  if (pk === 'p2') {
+    if (gros && ambi)
+      return 'Apparaître en 2ème page sur Google, c\'est comme avoir une boutique dans une rue où personne ne passe. Moins de 1% des gens regardent en page 2 quand ils cherchent quelque chose. Avec des chantiers à ' + pLbl + ' et ' + obj + ' chantiers visés par mois, tes clients potentiels existent, ils cherchent sur Google, mais ils ne tombent jamais sur toi.';
+    if (gros)
+      return 'La 2ème page de recherche sur Google, c\'est là où personne ne va. Quand un client cherche ton métier dans ta ville, il appelle quelqu\'un qui ressort en première page, pas toi. Avec des chantiers à ' + pLbl + ', des concurrents moins bons que toi signent probablement des chantiers qui auraient pu être les tiens.';
+    if (ambi)
+      return 'Tu vises ' + obj + ' chantiers par mois, mais si tu apparais en 2e page de recherche sur Google, tes clients ne te trouvent pas. Ce n\'est pas qu\'ils ne cherchent pas, c\'est que Google ne te montre pas assez haut. Remonter en 1ère page change tout.';
+    return 'La 2ème page de recherche sur Google, personne n\'y va. Les gens cherchent, trouvent quelqu\'un en page 1 et l\'appellent directement. Tant que tu n\'apparais qu\'en 2ème page, tu n\'existes pas pour eux, même si tu fais un excellent travail.';
+  }
+
+  // inv
+  if (gros && ambi)
+    return 'Si tu ne sais pas où tu apparais sur Google, c\'est que tu n\'as probablement jamais regardé, et ça veut souvent dire que ta visibilité est faible. Avec des chantiers à ' + pLbl + ' et ' + obj + ' chantiers visés par mois, c\'est le premier truc à régler : savoir exactement où tu en es pour pouvoir avancer.';
+  if (gros)
+    return 'Ne pas savoir où tu apparais sur Google, c\'est normal si tu n\'as jamais creusé le sujet. Mais avec des chantiers à ' + pLbl + ', ça vaut le coup de le vérifier : beaucoup d\'artisans découvrent qu\'ils sont quasi-invisibles et que ça leur coûte des milliers d\'euros chaque mois sans le savoir.';
+  return 'Ne pas connaître sa position sur Google, c\'est fréquent. Mais concrètement : si tu n\'es pas dans les 3 premiers résultats quand quelqu\'un cherche ton métier dans ta ville, il y a de grandes chances qu\'il appelle un concurrent. Le diagnostic visibilité permet de savoir exactement où tu en es.';
+}
+
+function calculate() {
+  if (!panier || chantierActuel === null || posRate === null || !objectif) return;
+  const lost  = Math.round(objectif * posRate) * panier;
+  const annee = lost * 12;
+  const box   = document.getElementById('result-box');
+  box.style.display = 'block';
+  box.style.animation = 'none'; void box.offsetWidth;
+  box.style.animation = 'scaleIn .4s cubic-bezier(.16,1,.3,1) both';
+  animateCount(document.getElementById('perte-mois'), lost);
+  document.getElementById('perte-annee').textContent = 'Soit ' + annee.toLocaleString('fr-FR') + ' € perdus sur l\'année';
+  document.getElementById('explication').textContent = getExplication(posKey, panier, objectif);
+  const bridgeEl  = document.getElementById('result-bridge');
+  const bridgeAmt = document.getElementById('bridge-amount');
+  const ctaBtn    = document.getElementById('result-cta-btn');
+  if (bridgeEl && bridgeAmt) {
+    bridgeAmt.textContent = lost.toLocaleString('fr-FR') + ' €';
+    bridgeEl.style.display = 'block';
+  }
+  if (ctaBtn) ctaBtn.textContent = 'Ces ' + lost.toLocaleString('fr-FR') + ' € sont à toi. Viens les chercher →';
+  if (typeof fbq === 'function') fbq('track', 'ViewContent', { content_name: 'Calculateur résultat', value: lost, currency: 'EUR' });
+  setTimeout(() => box.scrollIntoView({ behavior:'smooth', block:'nearest' }), 200);
+}
+
+/* ── Carousel ────────────────────────────── */
+let current = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots   = document.querySelectorAll('.c-dot');
+const total  = slides.length;
+let autoTimer = null;
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = (n + total) % total;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  resetAuto();
+}
+function next() { goTo(current + 1); }
+function prev() { goTo(current - 1); }
+function resetAuto() {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() => goTo(current + 1), 6000);
+}
+resetAuto();
+
+/* ── Décompte prix 79→0 € ────────────────── */
+function startCountdown() {
+  const el = document.getElementById('stat-countdown');
+  if (!el) return;
+  const dur = 2200, start = performance.now(), from = 79;
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 2);
+    const val = Math.round(from - from * ease);
+    el.textContent = val + ' €';
+    if (p < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = '0 €';
+      el.classList.add('struck');
+    }
+  }
+  requestAnimationFrame(step);
+}
+setTimeout(startCountdown, 2000);
+
+/* ── Compteurs animés stats ─────────────── */
+function animateStat(el) {
+  const target = parseInt(el.dataset.count);
+  if (isNaN(target)) return;
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const dur = 1400, start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = prefix + Math.round(target * ease) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-num[data-count]').forEach(animateStat);
+      statsObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stats-bar').forEach(el => statsObserver.observe(el));
+
+/* ── Scroll Reveal ───────────────────────── */
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin:'0px 0px -32px 0px' });
+
+document.querySelectorAll('.reveal, .rv-l, .rv-r, .rv-up').forEach(el => ro.observe(el));
+
+/* ── FAQ accordéon ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── Frise cônes : apparition séquentielle au scroll ── */
+(function() {
+  const timeline = document.querySelector('.diag-timeline');
+  if (!timeline) return;
+  const steps = timeline.querySelectorAll('.diag-tl-step');
+  const delays = [0, 180, 360, 540];
+
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        steps.forEach(function(s, i) {
+          setTimeout(function() { s.classList.add('tl-show'); }, delays[i]);
+        });
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+  obs.observe(timeline);
+})();
+
+/* ── Live visitor counter (aléatoire entre 6 et 26) ── */
+(function() {
+  const el = document.getElementById('visitorCount');
+  if (!el) return;
+  let current = 6;
+  const min = 6, max = 26;
+
+  function scheduleNext() {
+    const delay = 3000 + Math.random() * 9000;
+    setTimeout(function() {
+      // 70% chance de monter, 30% de descendre, mais reste entre min et max
+      const goUp = Math.random() < 0.70;
+      let next = goUp ? current + 1 : current - 1;
+      next = Math.max(min, Math.min(max, next));
+
+      current = next;
+      el.textContent = current;
+      el.style.transition = 'color .15s';
+      el.style.color = '#4ade80';
+      setTimeout(function() { el.style.color = ''; }, 500);
+      scheduleNext();
+    }, delay);
+  }
+  scheduleNext();
+})();
+
+/* ── Places disponibles : décompte 9 → 2 basé sur temps passé ── */
+(function() {
+  const el = document.getElementById('placesCount');
+  if (!el) return;
+  let places = 9;
+  const min = 2;
+  const pageStart = Date.now();
+
+  function flashAndDecrement() {
+    if (places <= min) return;
+    places--;
+    // Animation : mini flash
+    el.style.transform = 'scale(1.35)';
+    el.style.opacity = '0.4';
+    setTimeout(function() {
+      el.textContent = places;
+      el.style.transform = 'scale(1)';
+      el.style.opacity = '1';
+    }, 200);
+    scheduleNext();
+  }
+
+  function scheduleNext() {
+    if (places <= min) return;
+    // Délai qui augmente avec le temps passé : commence à ~20s, monte jusqu'à ~80s
+    const elapsed = (Date.now() - pageStart) / 1000;
+    const base = Math.min(20000 + elapsed * 400, 80000);
+    const jitter = Math.random() * 12000;
+    setTimeout(flashAndDecrement, base + jitter);
+  }
+
+  // Première baisse après 18s
+  setTimeout(flashAndDecrement, 18000);
+})();
+</script>
+</body>
+</html>
