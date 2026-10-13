@@ -1064,7 +1064,7 @@ html,body{overflow-x:hidden}
 .lbl.l{left:12px}.lbl.r{right:12px;background:var(--orange);color:var(--ink)}
 .hint{font-size:.85rem;opacity:.65;margin:12px 0 0}
 .phones2{display:flex;gap:14px;justify-content:center;margin-top:22px}
-.phones2 img{width:30%;border-radius:16px;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);transition:transform .5s var(--ease)}
+.phones2 img{width:34%;border-radius:16px;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);transition:transform .5s var(--ease)}
 .phones2 img:nth-child(2){transform:translateY(-14px)}
 .phones2 img:hover{transform:translateY(-10px) rotate(-1.5deg)}
 .sw3row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
