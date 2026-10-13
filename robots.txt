@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /confirmationdesartisansdubtp/
+Disallow: /femmedubtp/
+
+Sitemap: https://agencedelombre.fr/sitemap.xml
