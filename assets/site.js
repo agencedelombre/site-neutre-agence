@@ -82,6 +82,9 @@
       ctext.innerHTML = c === 'Toute la France'
         ? '<strong>Partout en France.</strong> On travaille à distance avec des entreprises de toute la France : visio, outils partagés, suivi régulier.'
         : '<strong>Agence de communication à ' + c + '.</strong> On connaît le tissu local et on intervient auprès des entreprises de ' + c + ' et des alentours. Parlons de votre visibilité.';
+      var slug = c.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-');
+      var known = ['chambery','aix-les-bains','albertville','annecy','grenoble','moutiers','bourg-saint-maurice'];
+      if (known.indexOf(slug) > -1) ctext.innerHTML += ' <a href="/agence-communication-' + slug + '/" style="color:var(--orange-dk);font-weight:700">Voir nos services à ' + c + ' →</a>';
       panel.hidden = false;
       if (typeof fbq === 'function') fbq('trackCustom', 'CityClick', {city: c});
     });
