@@ -1111,3 +1111,6 @@ html,body{overflow-x:hidden}
  .crail{top:58px}
 }
 @media(prefers-reduced-motion:reduce){.pin{animation:none}.checks li::before,.checks li::after{transition:none}}
+.zones{margin:22px 0 0}
+.zones img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 24px 50px -24px rgba(0,0,0,.6);border:1px solid rgba(128,128,128,.3)}
+.zones figcaption{font-size:.85rem;opacity:.65;margin-top:10px}
