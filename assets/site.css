@@ -993,4 +993,4 @@ html,body{overflow-x:hidden}
 .sw2{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;padding:6px 12px 6px 6px;border-radius:999px;background:#fff;border:1px solid var(--border)}
 .sw2 i{width:22px;height:22px;border-radius:50%;display:block}
 .swrow.big .sw2{font-size:.9rem;padding:8px 16px 8px 8px}.swrow.big .sw2 i{width:32px;height:32px}
-@media(max-width:860px){.projs .proj{grid-template-columns:1fr}.projs .proj:nth-of-type(even) .pv{order:0}.pn{top:-10px}}
+@media(max-width:860px){.projs .proj{grid-template-columns:minmax(0,1fr)}.projs .proj:nth-of-type(even) .pv{order:0}.pn{top:-10px}}
