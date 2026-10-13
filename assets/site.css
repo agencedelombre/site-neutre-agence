@@ -996,7 +996,7 @@ html,body{overflow-x:hidden}
 @media(max-width:860px){.projs .proj{grid-template-columns:minmax(0,1fr)}.projs .proj:nth-of-type(even) .pv{order:0}.pn{top:-10px}}
 
 /* ===== Réalisations : dossiers, de l'ombre à la lumière ===== */
-.crail{position:sticky;top:64px;z-index:30;background:rgba(228,225,219,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,27,25,.12)}
+.crail{position:sticky;top:76px;z-index:30;background:rgba(228,225,219,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,27,25,.12)}
 .crail-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:10px 0}
 .crail-in::-webkit-scrollbar{display:none}
 .crail a{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:.9rem;text-decoration:none;color:var(--ink);transition:background .25s,color .25s}
@@ -1108,9 +1108,13 @@ html,body{overflow-x:hidden}
  .cgrid.flip .stage{order:0}
  .stage{position:static}
  .chead{flex-direction:column;align-items:flex-start;gap:10px}
- .crail{top:58px}
+ .crail{top:76px}
 }
 @media(prefers-reduced-motion:reduce){.pin{animation:none}.checks li::before,.checks li::after{transition:none}}
 .zones{margin:22px 0 0}
 .zones img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 24px 50px -24px rgba(0,0,0,.6);border:1px solid rgba(128,128,128,.3)}
 .zones figcaption{font-size:.85rem;opacity:.65;margin-top:10px}
+.proof .logos img{height:56px}
+.proof .logos img.sqlogo{height:72px;mix-blend-mode:multiply}
+.logo-txt{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;line-height:.95;letter-spacing:.04em;text-align:center;color:#C5603A;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
+.logo-txt:hover{filter:none;opacity:1}
