@@ -940,3 +940,12 @@ html,body{overflow-x:hidden}
 .marquee{width:calc(100% + 40px);max-width:none}
 @media(max-width:900px){.tl-item:nth-child(n) .tl-card{transform:translateX(16px) scale(.99)}.tl-item.active .tl-card{transform:none}}
 @media(max-width:900px){.work.w-big{grid-row:span 1}.work.w-big h3{font-size:1.3rem}}
+
+/* Avis Google */
+.g-label{margin-top:40px;font-weight:700;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;color:#5E5952}
+.reviews.g2{grid-template-columns:repeat(2,1fr);margin-top:16px}
+.reviews.g2 .rev blockquote{font-size:1.02rem}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--beton);display:grid;place-items:center;font-family:var(--display);font-size:1.2rem;flex:none}
+.rev footer .avatar{width:44px;height:44px;object-fit:initial}
+@media(max-width:900px){.reviews.g2{grid-template-columns:minmax(0,1fr)}}
+.rev footer .avatar{color:var(--beton);font-size:1.25rem;line-height:1}
